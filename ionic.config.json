@@ -1,0 +1,7 @@
+{
+  "name": "feedme",
+  "integrations": {
+	  "capacitor": {}
+  },
+  "type": "react"
+}

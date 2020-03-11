@@ -1,6 +1,6 @@
 {
-  "appId": "com.reactionic.com",
-  "appName": "React Ionic",
+  "appId": "com.feedme.com",
+  "appName": "Feed Me",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
