@@ -1,8 +1,0 @@
-{
-  "appId": "com.reactionic.com",
-  "appName": "React Ionic",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "build",
-  "cordova": {}
-}
