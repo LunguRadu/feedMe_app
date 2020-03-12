@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Message, getMessage } from '../data/messages';
+import { Message, getMessage } from '../../data/recipes';
 import {
   IonBackButton,
   IonButtons,
@@ -15,7 +15,7 @@ import {
 } from '@ionic/react';
 import {fastFoodOutline } from 'ionicons/icons';
 import { RouteComponentProps } from 'react-router';
-import './ViewMessage.css';
+import './RecipeView.css';
 
 interface ViewMessageProps extends RouteComponentProps<{ id: string; }> { }
 

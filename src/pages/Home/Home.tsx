@@ -8,8 +8,8 @@ import React, { /*Component,*/ useState } from 'react';
 //   IonCardSubtitle
 // } from '@ionic/react';
 
-import MessageListItem from '../components/RecipeList';
-import { Message, getMessages } from '../data/messages';
+import MessageListItem from '../ListView/ListView';
+import { Message, getMessages } from '../../data/recipes';
 import {
   IonContent,
   IonHeader,
