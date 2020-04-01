@@ -61,3 +61,4 @@ export const SearchBarExamples: React.FC = () => {
     </IonPage>
   );
 };
+
