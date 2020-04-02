@@ -1,13 +1,4 @@
 import React, { /*Component,*/ useState } from 'react';
-// import {
-//   IonApp,
-//   IonContent,
-//   IonCard,
-//   IonCardHeader,
-//   IonCardTitle,
-//   IonCardSubtitle
-// } from '@ionic/react';
-
 import MessageListItem from '../ListView/ListView';
 import { Message, getMessages } from '../../data/recipes';
 import {
@@ -19,27 +10,11 @@ import {
   IonRefresherContent,
   IonTitle,
   IonToolbar,
-  useIonViewWillEnter
+  useIonViewWillEnter,
+  IonBackButton
 } from '@ionic/react';
 
 import './Home.css';
-
-// class Home extends Component {
-//   render() {
-//     return (
-      
-//         <IonContent>
-//           <IonCard>
-//             <IonCardHeader>
-          
-//               <IonCardTitle>Home Page</IonCardTitle>
-//             </IonCardHeader>
-//           </IonCard>
-//         </IonContent>
-      
-//     );
-//   }
-// }
 
 const Home: React.FC = () => {
 
@@ -57,10 +32,11 @@ const Home: React.FC = () => {
   };
 
   return (
-    <IonPage id="home-page">
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>List of Recipes:</IonTitle>
+          <IonBackButton text="Back to Search" defaultHref="/searchpage"></IonBackButton>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -84,6 +60,5 @@ const Home: React.FC = () => {
     </IonPage>
   );
 };
-
 
 export default Home;

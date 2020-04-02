@@ -7,11 +7,11 @@ import {
 import { Message } from '../../data/recipes';
 import './ListView.css';
 
-interface MessageListItemProps {
+interface ListViewProps {
   message: Message;
 }
 
-const MessageListItem: React.FC<MessageListItemProps> = ({ message }) => {
+const ListView: React.FC<ListViewProps> = ({ message }) => {
   return (
     // IMPORTANT
     <IonItem routerLink={`/message/${message.id}`} detail={false}>
@@ -32,4 +32,4 @@ const MessageListItem: React.FC<MessageListItemProps> = ({ message }) => {
   );
 };
 
-export default MessageListItem;
+export default ListView;

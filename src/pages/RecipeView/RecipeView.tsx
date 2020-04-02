@@ -33,7 +33,7 @@ const ViewMessage: React.FC<ViewMessageProps> = ({ match }) => {
       <IonHeader translucent>
         <IonToolbar>
           <IonButtons>
-            <IonBackButton text="Back" defaultHref="/home"></IonBackButton>
+            <IonBackButton text="Back to List" defaultHref="/home"></IonBackButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
