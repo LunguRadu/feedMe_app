@@ -14,11 +14,12 @@ import { RouteComponentProps } from 'react-router';
 
 interface SearchPageProps extends RouteComponentProps<{ id: string; }> { }
 
-
 const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
 
-  const [searchText, setSearchText] = useState('');
+  const [IngredientText, setSearchText] = useState('');
 
+  //TODO: Set inputs in search href to actual list of inputs
+  //TODO: Change search button to not a back button
   return (
     <IonPage id="home-page">
       <IonHeader translucent>
@@ -26,14 +27,15 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
 
       <IonContent fullscreen>
       <p>Default Searchbar</p>
-      <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
+      <IonSearchbar value={IngredientText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
+      
 
       </IonContent>
 
       <IonFooter>
       <IonToolbar>
           <IonButtons>
-            <IonBackButton text="Done" defaultHref="/home"></IonBackButton>
+            <IonBackButton text="Search" defaultHref="/home?inputs=chicken,kale" ></IonBackButton>
           </IonButtons>
         </IonToolbar>
       </IonFooter>

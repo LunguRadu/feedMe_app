@@ -1,4 +1,5 @@
 export interface Message {
+  //TODO: Define for fields actual in result
   fromName: string;
   subject: string;
   date: string;
