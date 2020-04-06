@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchPage.css';
 import {
-  IonBackButton,
+  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -19,23 +19,25 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
   const [IngredientText, setSearchText] = useState('');
 
   //TODO: Set inputs in search href to actual list of inputs
-  //TODO: Change search button to not a back button
+  //TODO: Change search button to not a back button - Radu
   return (
     <IonPage id="home-page">
-      <IonHeader translucent>
+      <IonHeader 
+        translucent>
       </IonHeader>
-
       <IonContent fullscreen>
-      <p>Default Searchbar</p>
-      <IonSearchbar value={IngredientText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
+        <p>Default Searchbar</p>
+        <IonSearchbar 
+          value={IngredientText} onIonChange={e => setSearchText(e.detail.value!)}>
+        </IonSearchbar>
+      </IonContent>
       
 
-      </IonContent>
-
+     
       <IonFooter>
       <IonToolbar>
           <IonButtons>
-            <IonBackButton text="Search" defaultHref="/home?inputs=chicken,kale" ></IonBackButton>
+          ><IonButton expand = "block" fill ="solid" shape ="round" size = "large" color ="success" href="/home?inputs=chicken,kale">SEARCH</IonButton>
           </IonButtons>
         </IonToolbar>
       </IonFooter>
@@ -45,7 +47,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
 
 export default SearchPage;
 
-
+//</IonToolbar> <IonButton text="Search" defaultHref="/home?inputs=chicken,kale" ></IonButton>
 //   const [searchText, setSearchText] = useState('');
 //   return (
 //     <IonPage>
