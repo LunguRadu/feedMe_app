@@ -8,7 +8,7 @@ import {
   IonSearchbar,
   IonPage,
   IonToolbar,
-  IonFooter
+  IonFooter,
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 
@@ -19,25 +19,26 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
   const [IngredientText, setSearchText] = useState('');
 
   //TODO: Set inputs in search href to actual list of inputs
-  //TODO: Change search button to not a back button - Radu
   return (
     <IonPage id="home-page">
       <IonHeader 
         translucent>
       </IonHeader>
       <IonContent fullscreen>
-        <p>Default Searchbar</p>
+        <p>Input Ingredients</p>
         <IonSearchbar 
           value={IngredientText} onIonChange={e => setSearchText(e.detail.value!)}>
         </IonSearchbar>
-      </IonContent>
-      
-
-     
+      </IonContent> 
       <IonFooter>
       <IonToolbar>
           <IonButtons>
-          ><IonButton expand = "block" fill ="solid" shape ="round" size = "large" color ="success" href="/home?inputs=chicken,kale">SEARCH</IonButton>
+          ><IonButton expand = "block" 
+                      fill ="solid" 
+                      shape ="round" 
+                      size = "large" 
+                      color ="success" 
+                      href="/home?inputs=chicken,kale">SEARCH</IonButton>
           </IonButtons>
         </IonToolbar>
       </IonFooter>
