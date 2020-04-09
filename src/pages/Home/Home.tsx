@@ -1,6 +1,6 @@
 import React, { /*Component,*/ useState } from 'react';
 import MessageListItem from '../ListView/ListView';
-import { Message, getMessages } from '../../data/recipes';
+import { Ingredient, Recipe, getRecipes} from '../../data/recipes';
 import {
   IonContent,
   IonHeader,
@@ -20,12 +20,12 @@ import {
 import './Home.css';
 
 const Home: React.FC = () => {
-
-  const [messages, setMessages] = useState<Message[]>([]);
+  console.log('Const Home Defined'); // temporary print statement check REMOVE!
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
 
   useIonViewWillEnter(() => {
-    const msgs = getMessages();
-    setMessages(msgs);
+    const msgs = getRecipes();
+    setRecipes(msgs);
   });
 
   const refresh = (e: CustomEvent) => {
@@ -39,8 +39,9 @@ const Home: React.FC = () => {
     return new URLSearchParams(useLocation().search);
   }
   let inputs = useQuery().get("inputs");
-
-  function fetchRecipes(ingredients: string | null) {
+  
+  function fetchRecipes(ingredients: string | null){// API Function call
+    console.log('Fetch recipes called!'); // temporary print statement check REMOVE!
     fetch('https://api.edamam.com/search?q=' + ingredients + '&app_id=12ef1ccd&app_key=c38b84d50a0fb09c60c7f64af6853958')
       .then(res => res.json())
       .then(
@@ -48,15 +49,27 @@ const Home: React.FC = () => {
           console.log('Found ' + result.count + ' recipes!');
           console.log('Here they are: ' + result.hits);
           console.log(result);
-          //TODO: setMessages to result.hits
-          //  Do this after setMessages expects correct format
-          setMessages([
-            {
-              fromName: '1',
-              subject: result.hits[0].recipe.label,
-              date: '1000 ingredient matches',
-              id: 0
-            }]); //Temporary hack to show recipe lablel of first result TODO: REMOVE!
+
+          var recipes: Recipe[] = [];
+
+          result.hits.forEach(function (hit: any) {//loop to update the recipes shown in Listview to API results
+            var hitIngredients: Ingredient[] = [];
+            hit.recipe.ingredients.forEach(function (ingredient: any) {
+              hitIngredients.push({
+                text: hit.recipe.ingredients.text,
+                weight: hit.recipe.ingredients.weight
+              } as Ingredient)
+            });
+            var recipe: Recipe = {
+              name: hit.recipe.label,
+              image: hit.recipe.image,
+              id: hit.recipe.uri,// use URL as ID because each is unique
+              ingredientsLines: hit.recipe.ingredientLines,
+              ingredients: hitIngredients,
+              instructions: hit.recipe.url
+            }
+            recipes.push(recipe);// add induvidual recipe to recipes to be 'drawn'
+          });
         },
         (error) => { //If an errors
           //Print error details to console
@@ -89,7 +102,7 @@ const Home: React.FC = () => {
         </IonHeader>
 
         <IonList>
-          {messages.map(m => <MessageListItem key={m.id} message={m} />)}
+          {recipes.map(r => <MessageListItem key={r.id} recipe={r} />)}
         </IonList>
         
       </IonContent>

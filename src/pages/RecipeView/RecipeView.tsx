@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Message, getMessage } from '../../data/recipes';
+import { Recipe, getRecipe } from '../../data/recipes';
 import {
   IonBackButton,
   IonButtons,
@@ -21,13 +21,13 @@ interface ViewMessageProps extends RouteComponentProps<{ id: string; }> { }
 
 const ViewMessage: React.FC<ViewMessageProps> = ({ match }) => {
 
-  const [message, setMessage] = useState<Message>();
+  const [recipe, setRecipe] = useState<Recipe>(); // collects current recipe data
 
   useIonViewWillEnter(() => {
-    const msg = getMessage(parseInt(match.params.id, 10));
-    setMessage(msg);
+    const msg = getRecipe(match.params.id);
+    setRecipe(msg);
   });
-
+// will eventually display induvidual recipe
   return (
     <IonPage id="view-message-page">
       <IonHeader translucent>
@@ -39,25 +39,22 @@ const ViewMessage: React.FC<ViewMessageProps> = ({ match }) => {
       </IonHeader>
 
       <IonContent fullscreen>
-        {message ? (
+        {recipe ? (
           <>
             <IonItem>
               <IonIcon icon={fastFoodOutline} color="primary"></IonIcon>
               <IonLabel className="ion-text-wrap">
                 <h2>
-                  {message.fromName}
-                  <span className="date">
-                    <IonNote>{message.date}</IonNote>
-                  </span>
+                  {recipe.name}
                 </h2>
                 <h3> <IonNote>Recipe Instructions</IonNote></h3>
               </IonLabel>
             </IonItem>
 
             <div className="ion-padding">
-              <h1>{message.subject}</h1>
+              <h1>{recipe.image}</h1>
               <p>
-                [WIP]
+                r
               </p>
             </div>
           </>

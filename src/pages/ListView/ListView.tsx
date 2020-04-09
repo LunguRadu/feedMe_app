@@ -1,29 +1,24 @@
 import React from 'react';
 import {
   IonItem,
-  IonLabel,
-  IonNote
+  IonLabel
   } from '@ionic/react';
-import { Message } from '../../data/recipes';
+import { Recipe } from '../../data/recipes';
 import './ListView.css';
 
 interface ListViewProps {
-  message: Message;
+  recipe: Recipe;
 }
 
-const ListView: React.FC<ListViewProps> = ({ message }) => {
+const ListView: React.FC<ListViewProps> = ({ recipe }) => { // sets each recipe to list format with name and an image (eventually)
   return (
-    // IMPORTANT
-    <IonItem routerLink={`/message/${message.id}`} detail={false}>
+    <IonItem routerLink={`/message/${recipe.id}`} detail={false}> 
       <div slot="start" className="dot dot-unread"></div>
       <IonLabel className="ion-text-wrap">
         <h2>
-          {message.fromName}
-          <span className="date">
-            <IonNote>{message.date}</IonNote>
-          </span>
+          {recipe.name}
         </h2>
-        <h3>{message.subject}</h3>
+        <h3>{recipe.image}</h3>
         <p>
           [RECIPE INSTRUCTIONS GO HERE]
         </p>
