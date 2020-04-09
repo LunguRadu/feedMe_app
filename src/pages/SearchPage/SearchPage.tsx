@@ -20,11 +20,26 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
 
   const [IngredientText, setSearchText] = useState('');
 
-  const searchbar = document.querySelector('IonSeachbar');
-
-  var listOfIngredients: string[] = [];
-  let paragraph:HTMLHeadingElement = document.getElementById('ingredientsList') as HTMLHeadingElement;
+  const listOfIngredients: string[] = [];
+  var paragraph:HTMLHeadingElement = document.getElementById('ingredientsList') as HTMLHeadingElement;
   var currentText:string="";
+  var url:string="/home?inputs=peas";
+  var searchButton:HTMLButtonElement = document.getElementById('searchButton') as HTMLButtonElement;
+
+  //TODO: Move this to seperate tsx file
+  //TODO: Account for invalid or blank inputs
+  function addButton(){
+    listOfIngredients.push(currentText)
+    paragraph.innerText=(listOfIngredients.toString())
+    // url=addTwoStrings("/home?inputs=","peas")
+    // alert(url)
+    // searchButton.setAttribute('href','/home')
+    //TODO: Add code to clear searchbar when button is clicked
+  }
+
+  function addTwoStrings(s1:string,s2:string){
+    return s1.concat(s2);
+  }
 
   //TODO: Set inputs in search href to actual list of inputs
   return (
@@ -32,7 +47,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
       <IonHeader 
         translucent>
           <p>Input Ingredients</p>
-        <IonSearchbar value={IngredientText} onIonChange={e => currentText=(e.detail.value!)} onIonBlur={()=>listOfIngredients.push(currentText)}>
+        <IonSearchbar value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
         </IonSearchbar>
       </IonHeader>
 
@@ -57,13 +72,15 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
       <IonFooter>
       <IonToolbar>
           <IonButtons>
-          <IonButton onClick = {() => paragraph.innerText=(listOfIngredients.toString())}>Add Ingredient</IonButton>
-          <IonButton expand = "block" 
+          <IonButton onClick = {() => addButton()}>Add Ingredient</IonButton>
+          <IonButton id="seachButton"
+                      expand = "block" 
                       fill ="solid" 
                       shape ="round" 
                       size = "large" 
                       color ="success" 
-                      href="/home?inputs=chicken,kale"
+                      href={url}
+                      // target = "self" 
                       >
                         SEARCH
                       </IonButton>
