@@ -9,6 +9,8 @@ import {
   IonPage,
   IonToolbar,
   IonFooter,
+  IonList,
+  IonItem
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 
@@ -18,27 +20,53 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
 
   const [IngredientText, setSearchText] = useState('');
 
+  const searchbar = document.querySelector('IonSeachbar');
+
+  var listOfIngredients: string[] = [];
+  let paragraph:HTMLHeadingElement = document.getElementById('ingredientsList') as HTMLHeadingElement;
+  var currentText:string="";
+
   //TODO: Set inputs in search href to actual list of inputs
   return (
     <IonPage id="home-page">
       <IonHeader 
         translucent>
-      </IonHeader>
-      <IonContent fullscreen>
-        <p>Input Ingredients</p>
-        <IonSearchbar 
-          value={IngredientText} onIonChange={e => setSearchText(e.detail.value!)}>
+          <p>Input Ingredients</p>
+        <IonSearchbar value={IngredientText} onIonChange={e => currentText=(e.detail.value!)} onIonBlur={()=>listOfIngredients.push(currentText)}>
         </IonSearchbar>
-      </IonContent> 
+      </IonHeader>
+
+
+      <IonContent fullscreen>
+      <div id = 'possibleSearches'>
+        <IonList>
+          <IonItem>Chicken</IonItem>
+          <IonItem>Carrots</IonItem>
+          <IonItem>Spinach</IonItem>
+          <IonItem>Eggs</IonItem>
+          <IonItem>Potatoes</IonItem>
+        </IonList>
+      </div>
+
+      <div>
+        <h5 id='ingredientsList'>Inputted ingredients go here</h5>
+      </div>
+      </IonContent>
+
+
       <IonFooter>
       <IonToolbar>
           <IonButtons>
-          ><IonButton expand = "block" 
+          <IonButton onClick = {() => paragraph.innerText=(listOfIngredients.toString())}>Add Ingredient</IonButton>
+          <IonButton expand = "block" 
                       fill ="solid" 
                       shape ="round" 
                       size = "large" 
                       color ="success" 
-                      href="/home?inputs=chicken,kale">SEARCH</IonButton>
+                      href="/home?inputs=chicken,kale"
+                      >
+                        SEARCH
+                      </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonFooter>
@@ -47,64 +75,3 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
 };
 
 export default SearchPage;
-
-//</IonToolbar> <IonButton text="Search" defaultHref="/home?inputs=chicken,kale" ></IonButton>
-//   const [searchText, setSearchText] = useState('');
-//   return (
-//     <IonPage>
-//       <IonHeader>
-//         <IonToolbar>
-//           <IonTitle>IonSearchBar Examples</IonTitle>
-//         </IonToolbar>
-//       </IonHeader>
-//       <IonContent>
-//         <p>Default Searchbar</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
-
-//         <p>Searchbar with cancel button always shown</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} showCancelButton="always"></IonSearchbar>
-
-//         <p>Searchbar with cancel button never shown</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} showCancelButton="never"></IonSearchbar>
-
-//         <p>Searchbar with cancel button shown on focus</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} showCancelButton="focus"></IonSearchbar>
-
-//         <p>Searchbar with danger color</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} color="danger"></IonSearchbar>
-
-//         <p>Searchbar with telephone type</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} type="tel"></IonSearchbar>
-
-//         <p>Searchbar with numeric inputmode</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} inputmode="numeric"></IonSearchbar>
-
-//         <p>Searchbar disabled </p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} disabled={true}></IonSearchbar>
-
-//         <p>Searchbar with a cancel button and custom cancel button text</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} showCancelButton="focus" cancelButtonText="Custom Cancel"></IonSearchbar>
-
-//         <p>Searchbar with a custom debounce - Note: debounce only works on onIonChange event</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} debounce={1000}></IonSearchbar>
-
-//         <p>Animated Searchbar</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} animated></IonSearchbar>
-
-//         <p>Searchbar with a placeholder</p>
-//         <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} placeholder="Filter Schedules"></IonSearchbar>
-
-//         <p>Searchbar in a Toolbar</p>
-//         <IonToolbar>
-//           <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
-//         </IonToolbar>
-
-//       </IonContent>
-//       <IonFooter>
-//         <IonToolbar>
-//           Search Text: {searchText ?? '(none)'}
-//         </IonToolbar>
-//       </IonFooter>
-//     </IonPage>
-//   );
-// };
