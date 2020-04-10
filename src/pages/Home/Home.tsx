@@ -1,5 +1,6 @@
 import React, { /*Component,*/ useState } from 'react';
 import MessageListItem from '../ListView/ListView';
+import listOfIngredients from '../SearchPage/SearchPage';
 import { Ingredient, Recipe, getRecipes} from '../../data/recipes';
 import {
   IonContent,
@@ -82,10 +83,13 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
+        <br></br>
         <IonToolbar>
-          <IonTitle>List of Recipes:</IonTitle>
-  <IonTitle>Params: {inputs}</IonTitle>
           <IonBackButton text="Back to Search" defaultHref="/searchpage"></IonBackButton>
+          <br></br>
+          <IonTitle>Inputs: {inputs}</IonTitle>
+          <br></br>
+          <IonTitle>List of Recipes:</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>

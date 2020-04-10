@@ -1,0 +1,18 @@
+#home-page ion-item {
+    font-weight: 100;
+  }
+
+  #home-page h5 {
+    font-weight: 1000;
+    text-align: center;
+  }
+
+  #home-page h6 {
+    font-weight: 700;
+    text-align: center;
+  }
+
+  ion-content{
+
+    --ion-background-color:#ffffff;
+}

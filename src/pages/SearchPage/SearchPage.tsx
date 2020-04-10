@@ -10,9 +10,11 @@ import {
   IonToolbar,
   IonFooter,
   IonList,
-  IonItem
+  IonItem,
+  IonIcon,
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
+import { playOutline } from 'ionicons/icons';
 
 interface SearchPageProps extends RouteComponentProps<{ id: string; }> { }
 
@@ -20,21 +22,21 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
 
   const [IngredientText, setSearchText] = useState('');
 
-  const listOfIngredients: string[] = [];
+  var listOfIngredients: string[] = [];
   var paragraph:HTMLHeadingElement = document.getElementById('ingredientsList') as HTMLHeadingElement;
   var currentText:string="";
-  var url:string="/home?inputs=peas";
-  var searchButton:HTMLButtonElement = document.getElementById('searchButton') as HTMLButtonElement;
+  var url:string=addTwoStrings("/home?inputs=",listOfIngredients.toString());
+  // var searchBar: HTMLIonSearchbarElement = document.getElementById('searchBar') as HTMLIonSearchbarElement;
 
   //TODO: Move this to seperate tsx file
   //TODO: Account for invalid or blank inputs
   function addButton(){
     listOfIngredients.push(currentText)
     paragraph.innerText=(listOfIngredients.toString())
-    // url=addTwoStrings("/home?inputs=","peas")
-    // alert(url)
-    // searchButton.setAttribute('href','/home')
-    //TODO: Add code to clear searchbar when button is clicked
+    url=addTwoStrings("/home?inputs=",listOfIngredients.toString());
+    alert(url)
+    // setSearchText(" ");
+    //TODO: ^ Fix code to clear searchbar when button is clicked
   }
 
   function addTwoStrings(s1:string,s2:string){
@@ -44,27 +46,31 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
   //TODO: Set inputs in search href to actual list of inputs
   return (
     <IonPage id="home-page">
-      <IonHeader 
-        translucent>
-          <p>Input Ingredients</p>
-        <IonSearchbar value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
-        </IonSearchbar>
+      <IonHeader translucent>
       </IonHeader>
 
 
       <IonContent fullscreen>
+        <br></br>
+        <p>Type in Ingredients...</p>
+        <IonSearchbar id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
+        </IonSearchbar>
+
       <div id = 'possibleSearches'>
+        {/* TODO:Add more to this list
+        TODO: Make this list its own scroll area
+        TODO: Add icons */}
         <IonList>
-          <IonItem>Chicken</IonItem>
-          <IonItem>Carrots</IonItem>
-          <IonItem>Spinach</IonItem>
-          <IonItem>Eggs</IonItem>
-          <IonItem>Potatoes</IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon> &nbsp; Apples</IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Bananas</IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Carrots</IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Durians</IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Eggs</IonItem>
         </IonList>
       </div>
-
       <div>
-        <h5 id='ingredientsList'>Inputted ingredients go here</h5>
+        <h5>Your ingredients:</h5>
+        <h6 id='ingredientsList'>***</h6>
       </div>
       </IonContent>
 
@@ -73,14 +79,14 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
       <IonToolbar>
           <IonButtons>
           <IonButton onClick = {() => addButton()}>Add Ingredient</IonButton>
-          <IonButton id="seachButton"
+          <IonButton id="seach-button"
                       expand = "block" 
                       fill ="solid" 
                       shape ="round" 
                       size = "large" 
                       color ="success" 
                       href={url}
-                      // target = "self" 
+                      // TODO: Check that there is at least one input. 
                       >
                         SEARCH
                       </IonButton>
