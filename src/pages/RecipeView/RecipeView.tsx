@@ -28,7 +28,6 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
 
   let id = match.params.id;
   let recipe = state.recipes.find(x => x.id === id)
-  console.log("id:" +id+" recipe: "+recipe);
 
 // will eventually display induvidual recipe
   return (
