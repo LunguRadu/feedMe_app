@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Recipe, getRecipe } from '../../data/recipes';
+import React, { useContext, useEffect} from 'react';
+import { Recipe } from '../../models/recipe';
+import {AppContext } from '../../data/AppContext';
 import {
   IonBackButton,
   IonButtons,
@@ -17,16 +18,18 @@ import {fastFoodOutline } from 'ionicons/icons';
 import { RouteComponentProps } from 'react-router';
 import './RecipeView.css';
 
-interface ViewMessageProps extends RouteComponentProps<{ id: string; }> { }
+interface RecipeViewProps extends RouteComponentProps<{
+  id: string;
+}> {}
 
-const ViewMessage: React.FC<ViewMessageProps> = ({ match }) => {
+const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
 
-  const [recipe, setRecipe] = useState<Recipe>(); // collects current recipe data
+  const { state, dispatch } = useContext(AppContext);
 
-  useIonViewWillEnter(() => {
-    const msg = getRecipe(match.params.id);
-    setRecipe(msg);
-  });
+  let id = match.params.id;
+  let recipe = state.recipes.find(x => x.id === id)
+  console.log("id:" +id+" recipe: "+recipe);
+
 // will eventually display induvidual recipe
   return (
     <IonPage id="view-message-page">
@@ -38,7 +41,7 @@ const ViewMessage: React.FC<ViewMessageProps> = ({ match }) => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
+      { <IonContent fullscreen>
         {recipe ? (
           <>
             <IonItem>
@@ -58,10 +61,10 @@ const ViewMessage: React.FC<ViewMessageProps> = ({ match }) => {
               </p>
             </div>
           </>
-        ) : <div>Message not found</div>}
-      </IonContent>
+        ) : <div>Recipe not found</div>}
+      </IonContent> }
     </IonPage>
   );
 };
 
-export default ViewMessage;
+export default RecipeView;
