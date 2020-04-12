@@ -2,9 +2,10 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { AppContextProvider } from './data/AppContext';
 import Home from './pages/Home/Home';
 import ListView from './pages/ListView/ListView';
-import ViewMessage from './pages/RecipeView/RecipeView';
+import RecipeView from './pages/RecipeView/RecipeView';
 import SearchPage from './pages/SearchPage/SearchPage';
 // import SearchPage from './pages/SearchPage/SearchPage';
 
@@ -29,15 +30,17 @@ import './theme/variables.css';
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route path="/listview" component={ListView} exact={true} />
-        <Route path="/message/:id" component={ViewMessage} exact={true} />
-        <Route path="/searchpage" component={SearchPage} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/searchpage" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
+    <AppContextProvider>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path="/recipelist" component={Home} exact={true} />
+          <Route path="/listview" component={ListView} exact={true} />
+          <Route path="/recipelist/:id" component={RecipeView} exact={true} />
+          <Route path="/searchpage" component={SearchPage} exact={true} />
+          <Route exact path="/" render={() => <Redirect to="/searchpage" />} />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </AppContextProvider>
   </IonApp>
 );
 

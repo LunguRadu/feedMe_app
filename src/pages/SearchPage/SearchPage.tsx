@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './SearchPage.css';
+import {AppContext } from '../../data/AppContext';
 import {
   IonButton,
   IonButtons,
@@ -14,13 +15,28 @@ import {
   IonIcon,
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
+import { attachProps } from '@ionic/react/dist/types/components/utils';
+import { setSearchText, loadRecipeData } from '../../data/recipes/recipes.actions';
+import { connect } from '../../data/connect';
 import { playOutline } from 'ionicons/icons';
 
-interface SearchPageProps extends RouteComponentProps<{ id: string; }> { }
+interface StateProps {
+  id: string;
+  history: any;
+}
 
-const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
+interface DispatchProps {
+  setSearchText: typeof setSearchText;
+  loadRecipeData: typeof loadRecipeData;
+}
+
+type SearchPageProps = StateProps & DispatchProps;
+
+const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
 
   const [IngredientText, setSearchText] = useState('');
+  const { state, dispatch } = useContext(AppContext);
+
 
   var listOfIngredients: string[] = [];
   var paragraph:HTMLHeadingElement = document.getElementById('ingredientsList') as HTMLHeadingElement;
@@ -84,9 +100,13 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
                       fill ="solid" 
                       shape ="round" 
                       size = "large" 
-                      color ="success" 
-                      href={url}
-                      // TODO: Check that there is at least one input. 
+                      color ="success"  
+                      onClick = { e => {
+                          e.preventDefault();
+                          loadRecipeData(listOfIngredients.toString());
+                          history.push('/recipelist');
+                        }
+                      }
                       >
                         SEARCH
                       </IonButton>
@@ -97,4 +117,12 @@ const SearchPage: React.FC<SearchPageProps> = ({ match }) => {
   );
 };
 
-export default SearchPage;
+export default connect<StateProps, DispatchProps>({
+  mapDispatchToProps: {
+    setSearchText,
+    loadRecipeData
+  },
+  component: React.memo(SearchPage)
+});
+
+//export default SearchPage;

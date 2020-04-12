@@ -3,7 +3,7 @@ import {
   IonItem,
   IonLabel
   } from '@ionic/react';
-import { Recipe } from '../../data/recipes';
+import { Recipe } from '../../models/recipe';
 import './ListView.css';
 
 interface ListViewProps {
@@ -12,7 +12,7 @@ interface ListViewProps {
 
 const ListView: React.FC<ListViewProps> = ({ recipe }) => { // sets each recipe to list format with name and an image (eventually)
   return (
-    <IonItem routerLink={`/message/${recipe.id}`} detail={false}> 
+    <IonItem routerLink={`/recipelist/${recipe.id}`} detail={false}> 
       <div slot="start" className="dot dot-unread"></div>
       <IonLabel className="ion-text-wrap">
         <h2>
