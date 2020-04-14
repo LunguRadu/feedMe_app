@@ -19,6 +19,7 @@ import { attachProps } from '@ionic/react/dist/types/components/utils';
 import { setSearchText, loadRecipeData } from '../../data/recipes/recipes.actions';
 import { connect } from '../../data/connect';
 import { playOutline } from 'ionicons/icons';
+import { stringify } from 'querystring';
 
 interface StateProps {
   id: string;
@@ -49,7 +50,8 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   function addButton(){
     listOfIngredients.push(currentText)
     paragraph.innerText=(listOfIngredients.toString())
-    url=addTwoStrings("/home?inputs=",listOfIngredients.toString());
+    var re:string = ","
+    url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(re,"%c").toString());
     alert(url)
     // setSearchText(" ");
     //TODO: ^ Fix code to clear searchbar when button is clicked
@@ -59,7 +61,6 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     return s1.concat(s2);
   }
 
-  //TODO: Set inputs in search href to actual list of inputs
   return (
     <IonPage id="home-page">
       <IonHeader translucent>

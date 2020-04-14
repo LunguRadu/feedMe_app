@@ -16,3 +16,7 @@
 
     --ion-background-color:#ffffff;
 }
+
+.new-background-color{
+    --background: #ffffff;
+}
