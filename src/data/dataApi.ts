@@ -4,7 +4,7 @@ import { Recipe } from '../models/recipe';
 
 export const getRecipeData = async (ingredients: string | null) => {
     const response = await Promise.all([
-        fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=5&ranking=1&ignorePantry=false&ingredients=apples%252Cflour%252Csugar", {
+        fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=5&ranking=1&ignorePantry=false&ingredients=" + ingredients, {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
