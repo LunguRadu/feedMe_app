@@ -1,5 +1,6 @@
 import React, { /*Component,*/ useState, useContext, useEffect} from 'react';
 import MessageListItem from '../ListView/ListView';
+import { Ingredient } from '../../models/ingredient';
 import { Recipe } from '../../models/recipe';
 import {AppContext } from '../../data/AppContext';
 import {
@@ -22,6 +23,7 @@ import './Home.css';
 const Home: React.FC = () => {
   
   const { state, dispatch } = useContext(AppContext);
+  //Dispatch -> update state
 
   const refresh = (e: CustomEvent) => {
     setTimeout(() => {

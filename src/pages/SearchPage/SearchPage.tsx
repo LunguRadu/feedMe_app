@@ -63,6 +63,8 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     currentText=" "
     paragraph.innerText=(" ")
     alert("list of ingredients cleared")
+
+    //TODO: Clear search bar
   }
 
   function addTwoStrings(s1:string,s2:string){
