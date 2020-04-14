@@ -47,7 +47,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
               <IonIcon icon={fastFoodOutline} color="primary"></IonIcon>
               <IonLabel className="ion-text-wrap">
                 <h2>
-                  {recipe.name}
+                  {recipe.title}
                 </h2>
                 <h3> <IonNote>Recipe Instructions</IonNote></h3>
               </IonLabel>

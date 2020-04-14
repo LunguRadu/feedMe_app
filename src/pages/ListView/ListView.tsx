@@ -16,7 +16,7 @@ const ListView: React.FC<ListViewProps> = ({ recipe }) => { // sets each recipe 
       <div slot="start" className="dot dot-unread"></div>
       <IonLabel className="ion-text-wrap">
         <h2>
-          {recipe.name}
+          {recipe.title}
         </h2>
         <h3>{recipe.image}</h3>
         <p>
