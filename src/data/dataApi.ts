@@ -39,38 +39,30 @@ export const getRecipeData = async (ingredients: string | null) => {
     return data;
 }
 
-// export const getDummyData = async () => {
-//     console.log("getting dummy data");
-//     const response = await Promise.all([
-//       fetch('/assets/data/dummydata.json')
-//     ]);
-//     const responseData = await response[0].json();
+export const getDummyData = async () => {
+    console.log("getting dummy data");
+    const response = await Promise.all([
+      fetch('/assets/data/dummydata.json')
+    ]);
+    const responseData = await response[0].json();
 
-//     var recipes: Recipe[] = [];
+    var recipes: Recipe[] = [];
 
-//     responseData.recipes.forEach(function (item: any) {//loop to update the recipes shown in Listview to API results
-//     // var hitIngredients: Ingredient[] = [];
-//     // hit.ingredients.forEach(function (ingredient: any) {
-//     //     hitIngredients.push({
-//     //     text: hit.ingredients.text,
-//     //     weight: hit.ingredients.weight
-//     //     } as Ingredient)
-//     // });
-//     var recipe: Recipe = {
-//         title: item.title,
-//         image: item.image,
-//         id: item.id,// use URL as ID because each is unique
-//         usedIngredientCount: item.usedIngredientCount,
-//         // ingredients: itemIngredients,
-//         // instructions: item.recipe.url
-//     }
-//     recipes.push(recipe);// add induvidual recipe to recipes to be 'drawn'
-//     });
+    responseData.forEach(function (item: any) {//loop to update the recipes shown in Listview to API results
+   
+    var recipe: Recipe = {
+        title: item.title,
+        image: item.image,
+        id: item.id,// use URL as ID because each is unique
+        usedIngredientCount: item.usedIngredientCount,
+    }
+    recipes.push(recipe);// add induvidual recipe to recipes to be 'drawn'
+    });
 
-//     const dummyData = {
-//         "recipes": recipes,
-//         "loading": false,
-//         "searchText": "dummy"
-//     }
-//     return dummyData;
-//   }
+    const dummyData = {
+        "recipes": recipes,
+        "loading": false,
+        "searchText": "dummy"
+    }
+    return dummyData;
+  }
