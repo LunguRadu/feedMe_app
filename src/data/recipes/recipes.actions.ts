@@ -1,11 +1,11 @@
-import { getRecipeData, getDummyData } from '../dataApi';
+import { getRecipeData } from '../dataApi';
 import { ActionType } from '../../util/types';
 import { RecipesState } from './recipes.state';
 
 export const loadRecipeData = (ingredients: string) => async (dispatch: React.Dispatch<any>) => {
   dispatch(setLoading(true));
-  //const data = await getRecipeData(ingredients);
-  const data = await getDummyData();
+  const data = await getRecipeData(ingredients);
+  // const data = await getDummyData();
   dispatch(setData(data));
   dispatch(setLoading(false));
 }

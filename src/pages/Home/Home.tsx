@@ -1,6 +1,5 @@
 import React, { /*Component,*/ useState, useContext, useEffect} from 'react';
 import MessageListItem from '../ListView/ListView';
-import { Ingredient } from '../../models/ingredient';
 import { Recipe } from '../../models/recipe';
 import {AppContext } from '../../data/AppContext';
 import {
