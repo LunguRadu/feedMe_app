@@ -57,6 +57,14 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     //TODO: ^ Fix code to clear searchbar when button is clicked
   }
 
+  function clearList(){
+    listOfIngredients = []
+    url = "";
+    currentText=" "
+    paragraph.innerText=(" ")
+    alert("list of ingredients cleared")
+  }
+
   function addTwoStrings(s1:string,s2:string){
     return s1.concat(s2);
   }
@@ -95,12 +103,12 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       <IonFooter>
       <IonToolbar>
           <IonButtons>
-          <IonButton onClick = {() => addButton()}>Add Ingredient</IonButton>
+          <IonButton size="small" onClick = {() => addButton()}>Add Ingredient</IonButton>
           <IonButton id="seach-button"
                       expand = "block" 
                       fill ="solid" 
                       shape ="round" 
-                      size = "large" 
+                      size = "small" 
                       color ="success"  
                       onClick = { e => {
                           e.preventDefault();
@@ -111,6 +119,15 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
                       >
                         SEARCH
                       </IonButton>
+          <IonButton 
+          onClick = {
+            e=>{
+              clearList();
+            }
+          }
+          >
+            Clear
+          </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonFooter>
