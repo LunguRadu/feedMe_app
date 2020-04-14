@@ -51,7 +51,7 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     listOfIngredients.push(currentText)
     paragraph.innerText=(listOfIngredients.toString())
     var re:string = ","
-    url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(re,"%c").toString());
+    url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(re,"+").toString());
     alert(url)
     // setSearchText(" ");
     //TODO: ^ Fix code to clear searchbar when button is clicked
