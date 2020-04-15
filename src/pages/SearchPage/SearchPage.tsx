@@ -56,18 +56,13 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       return null
     }
     else{
-    listOfIngredients.push(currentText)
+    listOfIngredients.push(currentText.toLowerCase().replace(/\s/g, ""))
     paragraph.innerText=(listOfIngredients.toString())
-    var re = /,/gi
-    url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(re,"+").toString());
+    url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(/,/gi,"+").toString());
     alert(url)
-    // setSearchText(" ");
+    setSearchText("");
     //TODO: ^ Fix code to clear searchbar when button is clicked
     }
-  }
-
-  function replaceAllCommas (s:string[]){
-    s.join().replace(",","+")
   }
 
   function clearList(){
@@ -76,7 +71,6 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     currentText=""
     paragraph.innerText=("***")
     alert("list of ingredients cleared")
-
     //TODO: Clear search bar
   }
 
@@ -87,6 +81,7 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   function addFromScrollList(s:string){
     currentText=s
     addButton()
+    currentText=""
   }
 
   return (
