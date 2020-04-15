@@ -87,14 +87,13 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   return (
     <IonPage id="home-page">
       <IonHeader translucent>
+      <br></br>
+        <p>Select Ingredients:</p>
+        <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
+        </IonSearchbar>
       </IonHeader>
 
-
-      <IonContent fullscreen>
-        <br></br>
-        <p>Type in Ingredients...</p>
-        <IonSearchbar id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
-        </IonSearchbar>
+      <IonContent>
 
       <div id = 'possibleSearches'>
         {/* TODO:Add more to this list
@@ -106,17 +105,22 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("carrots")}>Carrots</IonButton></IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("durians")}>Durians</IonButton></IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("eggs")}>Eggs</IonButton></IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("eggs")}>Eggs</IonButton></IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("eggs")}>Eggs</IonButton></IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("eggs")}>Eggs</IonButton></IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("eggs")}>Eggs</IonButton></IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("eggs")}>Eggs</IonButton></IonItem>
           {/* TODO: move a lot of the buttons' code to CSS file */}
         </IonList>
-      </div>
-      <div>
-        <h5>Your ingredients:</h5>
-        <h6 id='ingredientsList'>***</h6>
       </div>
       </IonContent>
 
 
       <IonFooter>
+      <div>
+        <h5>Your ingredients:</h5>
+        <h6 id='ingredientsList'>***</h6>
+      </div>
       <IonToolbar>
           <IonButtons>
           <IonButton size="small" onClick = {() => addButton()}>Add Ingredient</IonButton>
