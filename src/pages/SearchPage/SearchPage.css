@@ -17,6 +17,10 @@
     --ion-background-color:#ffffff;
 }
 
+#possibleSearches ion-button{
+  fill:"clear"
+}
+
 .new-background-color{
     --background: #ffffff;
 }

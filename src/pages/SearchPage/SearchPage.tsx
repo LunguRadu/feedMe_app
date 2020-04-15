@@ -19,7 +19,6 @@ import { attachProps } from '@ionic/react/dist/types/components/utils';
 import { setSearchText, loadRecipeData } from '../../data/recipes/recipes.actions';
 import { connect } from '../../data/connect';
 import { playOutline } from 'ionicons/icons';
-import { stringify } from 'querystring';
 
 interface StateProps {
   id: string;
@@ -59,12 +58,16 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     else{
     listOfIngredients.push(currentText)
     paragraph.innerText=(listOfIngredients.toString())
-    var re:string = ","
+    var re = /,/gi
     url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(re,"+").toString());
     alert(url)
     // setSearchText(" ");
     //TODO: ^ Fix code to clear searchbar when button is clicked
     }
+  }
+
+  function replaceAllCommas (s:string[]){
+    s.join().replace(",","+")
   }
 
   function clearList(){
@@ -81,8 +84,8 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     return s1.concat(s2);
   }
 
-  function addFromScrollList(){
-    currentText="apples"
+  function addFromScrollList(s:string){
+    currentText=s
     addButton()
   }
 
@@ -103,11 +106,12 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
         TODO: Make this list its own scroll area
         TODO: Add icons */}
         <IonList>
-          {/* <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton onClick={()=>addFromScrollList()}>Apples</IonButton></IonItem> */}
-          <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Bananas</IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Carrots</IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Durians</IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Eggs</IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("apples")}>Apples</IonButton></IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("bananas")}>Bananas</IonButton></IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("carrots")}>Carrots</IonButton></IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("durians")}>Durians</IonButton></IonItem>
+          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("eggs")}>Eggs</IonButton></IonItem>
+          {/* TODO: move a lot of the buttons' code to CSS file */}
         </IonList>
       </div>
       <div>
