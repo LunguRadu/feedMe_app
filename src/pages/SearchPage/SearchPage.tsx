@@ -48,6 +48,15 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   //TODO: Move this to seperate tsx file
   //TODO: Account for invalid or blank inputs
   function addButton(){
+    if(currentText==="" ){
+      alert("Please type an ingredient")
+      return null
+    }
+    else if (listOfIngredients.includes(currentText)){
+      alert("Already in the list")
+      return null
+    }
+    else{
     listOfIngredients.push(currentText)
     paragraph.innerText=(listOfIngredients.toString())
     var re:string = ","
@@ -55,13 +64,14 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     alert(url)
     // setSearchText(" ");
     //TODO: ^ Fix code to clear searchbar when button is clicked
+    }
   }
 
   function clearList(){
     listOfIngredients = []
     url = "";
-    currentText=" "
-    paragraph.innerText=(" ")
+    currentText=""
+    paragraph.innerText=("***")
     alert("list of ingredients cleared")
 
     //TODO: Clear search bar
@@ -69,6 +79,11 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
 
   function addTwoStrings(s1:string,s2:string){
     return s1.concat(s2);
+  }
+
+  function addFromScrollList(){
+    currentText="apples"
+    addButton()
   }
 
   return (
@@ -88,7 +103,7 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
         TODO: Make this list its own scroll area
         TODO: Add icons */}
         <IonList>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon> &nbsp; Apples</IonItem>
+          {/* <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton onClick={()=>addFromScrollList()}>Apples</IonButton></IonItem> */}
           <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Bananas</IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Carrots</IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon>&nbsp; Durians</IonItem>
@@ -112,7 +127,8 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
                       shape ="round" 
                       size = "small" 
                       color ="success"  
-                      onClick = { e => {
+                      onClick = { 
+                          e => {
                           e.preventDefault();
                           loadRecipeData(listOfIngredients.toString());
                           history.push('/recipelist');
