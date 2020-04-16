@@ -4,7 +4,7 @@ import {
   IonLabel
   } from '@ionic/react';
 import { Recipe } from '../../models/recipe';
-import './ListView.css';
+import './ListPage.css';
 
 interface ListViewProps {
   recipe: Recipe;
@@ -20,7 +20,7 @@ const ListView: React.FC<ListViewProps> = ({ recipe }) => { // sets each recipe 
         </h2>
         <h3>{recipe.image}</h3>
         <p>
-          [RECIPE INSTRUCTIONS GO HERE]
+          [RECIPE INSTRUCTIONS PREVIEW GOES HERE] 
         </p>
       </IonLabel>
     </IonItem>

@@ -16,7 +16,7 @@ import {
 } from '@ionic/react';
 import {fastFoodOutline } from 'ionicons/icons';
 import { RouteComponentProps } from 'react-router';
-import './RecipeView.css';
+import './RecipePage.css';
 
 interface RecipeViewProps extends RouteComponentProps<{
   id: string;
@@ -44,7 +44,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
         {recipe ? (
           <>
             <IonItem>
-              <IonIcon icon={fastFoodOutline} color="primary"></IonIcon>
+              <IonIcon icon={fastFoodOutline} color="success"></IonIcon>
               <IonLabel className="ion-text-wrap">
                 <h2>
                   {recipe.title}

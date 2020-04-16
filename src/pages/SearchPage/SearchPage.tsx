@@ -42,10 +42,8 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   var paragraph:HTMLHeadingElement = document.getElementById('ingredientsList') as HTMLHeadingElement;
   var currentText:string="";
   var url:string=addTwoStrings("/home?inputs=",listOfIngredients.toString());
-  // var searchBar: HTMLIonSearchbarElement = document.getElementById('searchBar') as HTMLIonSearchbarElement;
 
   //TODO: Move this to seperate tsx file
-  //TODO: Account for invalid or blank inputs
   function addButton(){
     if(currentText==="" ){
       alert("Please type an ingredient")
@@ -96,9 +94,6 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       <IonContent>
 
       <div id = 'possibleSearches'>
-        {/* TODO:Add more to this list
-        TODO: Make this list its own scroll area
-        TODO: Add icons */}
         <IonList>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("apples")}>Apples</IonButton></IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("bananas")}>Bananas</IonButton></IonItem>
@@ -164,4 +159,3 @@ export default connect<StateProps, DispatchProps>({
   component: React.memo(SearchPage)
 });
 
-//export default SearchPage;

@@ -1,5 +1,5 @@
 import React, { /*Component,*/ useState, useContext, useEffect} from 'react';
-import MessageListItem from '../ListView/ListView';
+import MessageListItem from '../ListPage/ListPage';
 import { Recipe } from '../../models/recipe';
 import {AppContext } from '../../data/AppContext';
 import {
@@ -17,7 +17,7 @@ import {
   useLocation
 } from "react-router-dom";
 
-import './Home.css';
+import './SearchResultsPage.css';
 
 const Home: React.FC = () => {
   
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
           <br></br>
           <IonTitle>Inputs: {inputs}</IonTitle>
           <br></br>
-          <IonTitle>List of Recipes:</IonTitle>
+          <IonTitle><u>Matching Recipes</u></IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>

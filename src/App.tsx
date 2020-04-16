@@ -3,9 +3,9 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { AppContextProvider } from './data/AppContext';
-import Home from './pages/Home/Home';
-import ListView from './pages/ListView/ListView';
-import RecipeView from './pages/RecipeView/RecipeView';
+import Home from './pages/SearchResultsPage/SearchResultsPage';
+import ListView from './pages/ListPage/ListPage';
+import RecipeView from './pages/RecipePage/RecipePage';
 import SearchPage from './pages/SearchPage/SearchPage';
 // import SearchPage from './pages/SearchPage/SearchPage';
 
