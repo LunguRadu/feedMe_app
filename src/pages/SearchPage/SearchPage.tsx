@@ -45,11 +45,11 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
 
   //TODO: Move this to seperate tsx file
   function addButton(){
-    if(currentText==="" ){
+    if(currentText===""){
       alert("Please type an ingredient")
       return null
     }
-    else if (listOfIngredients.includes(currentText)){
+    else if (listOfIngredients.includes(currentText.toLowerCase().replace(/\s/g, ""))){
       alert("Already in the list")
       return null
     }
@@ -58,7 +58,8 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     paragraph.innerText=(listOfIngredients.toString())
     url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(/,/gi,"+").toString());
     alert(url)
-    setSearchText("");
+    var x:string=""
+    setSearchText(x);
     //TODO: ^ Fix code to clear searchbar when button is clicked
     }
   }
