@@ -4,7 +4,11 @@
     "image":"https://spoonacular.com/recipeImages/Easy---Delish--Apple-Crumble-641803.jpg",
     "usedIngredientCount":3,
     "missedIngredientCount":4,
-    "likes":1
+    "likes":1,
+    "summary": "This is a summary",
+    "ExtendedIngredients": {"name": "name of recipe",
+    "amount": "amount of ingredient"},
+    "instructions": "recipe Instructions"
    
 },
 
@@ -14,5 +18,9 @@
   "image":"https://spoonacular.com/recipeImages/Grandmas-Apple-Crisp-645152.jpg",
   "usedIngredientCount":3,
   "missedIngredientCount":6,
-  "likes":1
+  "likes":1,
+  "summary": "This is a summary",
+    "ExtendedIngredients": {"name": "name of recipe",
+    "amount": "amount of ingredient"},
+    "instructions": "recipe Instructions"
   }]

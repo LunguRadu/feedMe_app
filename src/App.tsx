@@ -3,11 +3,9 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { AppContextProvider } from './data/AppContext';
-import Home from './pages/SearchResultsPage/SearchResultsPage';
 import ListView from './pages/ListPage/ListPage';
 import RecipeView from './pages/RecipePage/RecipePage';
 import SearchPage from './pages/SearchPage/SearchPage';
-// import SearchPage from './pages/SearchPage/SearchPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,13 +25,14 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import SearchResultsPage from './pages/SearchResultsPage/SearchResultsPage';
 
 const App: React.FC = () => (
   <IonApp>
     <AppContextProvider>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route path="/recipelist" component={Home} exact={true} />
+          <Route path="/recipelist" component={SearchResultsPage} exact={true} />
           <Route path="/listview" component={ListView} exact={true} />
           <Route path="/recipelist/:id" component={RecipeView} exact={true} />
           <Route path="/searchpage" component={SearchPage} exact={true} />

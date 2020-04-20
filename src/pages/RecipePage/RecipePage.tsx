@@ -17,17 +17,32 @@ import {
 import {fastFoodOutline } from 'ionicons/icons';
 import { RouteComponentProps } from 'react-router';
 import './RecipePage.css';
+import {setSingleRecipeData, loadSingleRecipeData } from '../../data/recipes/recipes.actions';
+import { connect } from '../../data/connect';
 
-interface RecipeViewProps extends RouteComponentProps<{
+interface StateProps extends RouteComponentProps<{
   id: string;
 }> {}
 
+interface DispatchProps {
+  setSingleRecipeData: typeof setSingleRecipeData;
+  
+}
+type RecipeViewProps = StateProps & DispatchProps;
+
 const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
+
+
 
   const { state, dispatch } = useContext(AppContext);
 
   let id = match.params.id;
   let recipe = state.recipes.find(x => x.id === id)
+  console.log(id);
+  console.log("This is testing to see if ID is found");
+  // useEffect(() => {
+    //   loadSingleRecipeData(id, recipe);
+    // }, [loadSingleRecipeData(id, recipe)]);
 
 // will eventually display induvidual recipe
   return (
@@ -66,4 +81,9 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
   );
 };
 
-export default RecipeView;
+export default connect<StateProps, DispatchProps>({
+  mapDispatchToProps: {
+    setSingleRecipeData
+  },
+  component: React.memo(RecipeView)
+});

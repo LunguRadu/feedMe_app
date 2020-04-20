@@ -19,7 +19,7 @@ import {
 
 import './SearchResultsPage.css';
 
-const Home: React.FC = () => {
+const SearchResultsPage: React.FC = () => {
   
   const { state, dispatch } = useContext(AppContext);
   //Dispatch -> update state
@@ -69,4 +69,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default SearchResultsPage;
