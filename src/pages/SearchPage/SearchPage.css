@@ -1,21 +1,51 @@
 #home-page{
-  background-color: #ffffff;
+  
+  background-image: url("https://lh4.googleusercontent.com/Ia8QeLBzj6YtDLs2YmR89DMEnC1RohKoJYXYILjGaU_NqrRQJoMndtmrwgKaHYXvWnIEyzn8qmg8jPoImgwEkLkWOQOWjYMzl7L_A6RSuOj4rLBBK-1_LyMhW1fhk5JX064rPkfbFhs")
   }
 
 #home-page ion-item {
     font-weight: 100;
+    border-color: #0b5c0b;
+    color: #000000;
+
   }
 
 #home-page h5 {
     font-weight: 1000;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0); 
   }
 
 #home-page h6 {
     font-weight: 700;
     text-align: center;
+    border-color: #0b5c0b;
+    color: rgb(0, 0, 0);
+    
   }
 
-ion-button{
+#home-page p{
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#home-page search-button{
+  color: #aa7171;
+  border-color: indigo;
+  border-width: thick;
+  background: rgb(29, 206, 23);
+  background-size: contain;
+
+}
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
   }
 
+#home-page possibleSearches{
+    --background: red;
+    --ion-color-base: transparent !important;
+        }
+
+ion-content { --background: transparent;}

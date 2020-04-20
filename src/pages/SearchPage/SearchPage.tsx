@@ -84,6 +84,7 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   }
 
   return (
+    
     <IonPage id="home-page">
       <IonHeader translucent>
       <br></br>
@@ -91,12 +92,10 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
         <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
         </IonSearchbar>
       </IonHeader>
-
       <IonContent>
-
       <div id = 'possibleSearches'>
-        <IonList>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("apples")}>Apples</IonButton></IonItem>
+        <IonList inset class="bg-transparent" lines="none">
+          <IonItem> <IonButton onClick={()=>addFromScrollList("apples")}>Apples</IonButton></IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("bananas")}>Bananas</IonButton></IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("carrots")}>Carrots</IonButton></IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("durians")}>Durians</IonButton></IonItem>
@@ -112,20 +111,15 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       </IonContent>
 
 
-      <IonFooter>
+      <IonFooter translucent>
       <div>
         <h5>Your ingredients:</h5>
         <h6 id='ingredientsList'>***</h6>
       </div>
-      <IonToolbar>
+      <IonToolbar >
           <IonButtons>
-          <IonButton size="small" onClick = {() => addButton()}>Add Ingredient</IonButton>
-          <IonButton id="seach-button"
-                      expand = "block" 
-                      fill ="solid" 
-                      shape ="round" 
-                      size = "small" 
-                      color ="success"  
+          <IonButton onClick = {() => addButton()}>Add Ingredient</IonButton>
+          <IonButton id="seach-button"     
                       onClick = { 
                           e => {
                           e.preventDefault();
