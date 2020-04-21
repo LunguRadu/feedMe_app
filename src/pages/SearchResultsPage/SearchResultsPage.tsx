@@ -36,14 +36,12 @@ const SearchResultsPage: React.FC = () => {
   let inputs = useQuery().get("inputs");
 
   return (
-    <IonPage>
+    <IonPage id="search-results-page">
       <IonHeader>
         <br></br>
         <IonToolbar>
           <IonBackButton text="Back to Search" defaultHref="/searchpage"></IonBackButton>
-          <br></br>
-          <IonTitle>Inputs: {inputs}</IonTitle>
-          <br></br>
+         
           <IonTitle><u>Matching Recipes</u></IonTitle>
         </IonToolbar>
       </IonHeader>
