@@ -13,6 +13,8 @@ import {
   IonList,
   IonItem,
   IonIcon,
+  IonRow,
+  IonCol,
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 import { attachProps } from '@ionic/react/dist/types/components/utils';
@@ -84,18 +86,26 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   }
 
   return (
-    
     <IonPage id="home-page">
-      <IonHeader translucent>
-      <br></br>
-        <p>Select Ingredients:</p>
-        <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
-        </IonSearchbar>
+
+
+      <IonHeader>
+        <h1>#feedMe</h1>
       </IonHeader>
+
+      <IonToolbar>
+        <p>Select Ingredients:</p>
+         <IonRow>
+           <IonCol>
+        <IonSearchbar placeholder = "type ingredients..."id = "searchBar" color="light" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}></IonSearchbar>
+          </IonCol>
+        </IonRow>
+      </IonToolbar>
+
       <IonContent>
       <div id = 'possibleSearches'>
-        <IonList inset class="bg-transparent" lines="none">
-          <IonItem> <IonButton onClick={()=>addFromScrollList("apples")}>Apples</IonButton></IonItem>
+        <IonList inset lines="full" >
+          <IonButton fill="clear" onClick={()=>addFromScrollList("apples")}>Apples</IonButton>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("bananas")}>Bananas</IonButton></IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("carrots")}>Carrots</IonButton></IonItem>
           <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList("durians")}>Durians</IonButton></IonItem>
@@ -119,7 +129,7 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       <IonToolbar >
           <IonButtons>
           <IonButton onClick = {() => addButton()}>Add Ingredient</IonButton>
-          <IonButton id="seach-button"     
+          <IonButton class="seach-button"     
                       onClick = { 
                           e => {
                           e.preventDefault();
