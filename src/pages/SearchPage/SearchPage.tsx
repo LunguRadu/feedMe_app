@@ -14,9 +14,6 @@ import {
   IonList,
   IonItem,
   IonIcon,
-  IonGrid,
-  IonRow,
-  IonCol,
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 import { attachProps } from '@ionic/react/dist/types/components/utils';
@@ -50,18 +47,15 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   //TODO: Move this to seperate tsx file
   function addButton(){
     if(currentText===""){
-      // alert("Please type an ingredient")
       return null
     }
     else if (listOfIngredients.includes(currentText.toLowerCase().replace(/\s/g, ""))){
-      // alert("Already in the list")
       return null
     }
     else{
     listOfIngredients.push(currentText.toLowerCase().replace(/\s/g, ""))
     paragraph.innerText=(listOfIngredients.toString())
     url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(/,/gi,"+").toString());
-    alert(url)
     var x:string=""
     setSearchText(x);
     //TODO: ^ Fix code to clear searchbar when button is clicked
@@ -73,7 +67,6 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     url = "";
     currentText=""
     paragraph.innerText=("***")
-    // alert("list of ingredients cleared")
     //TODO: Clear search bar
   }
 
@@ -90,28 +83,24 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   return (
     
     <IonPage id="home-page">
-      <IonHeader>
-        <h1>#feedMe</h1>
-      </IonHeader>
-      <IonToolbar>
+      <IonHeader translucent>
+      <br></br>
         <p>Select Ingredients:</p>
         <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
         </IonSearchbar>
-      </IonToolbar>
+      </IonHeader>
       <IonContent>
       <div id = 'possibleSearches'>
         <IonList inset class="bg-transparent" lines="none">
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success"onClick={()=>addFromScrollList(possibleIngredients[0])}>{possibleIngredients[0]}</IonButton></IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(possibleIngredients[1])}>{possibleIngredients[1]}</IonButton></IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(possibleIngredients[2])}>{possibleIngredients[2]}</IonButton></IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(possibleIngredients[3])}>{possibleIngredients[3]}</IonButton></IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(possibleIngredients[4])}>{possibleIngredients[4]}</IonButton></IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(possibleIngredients[5])}>{possibleIngredients[5]}</IonButton></IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(possibleIngredients[6])}>{possibleIngredients[6]}</IonButton></IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(possibleIngredients[7])}>{possibleIngredients[7]}</IonButton></IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(possibleIngredients[8])}>{possibleIngredients[8]}</IonButton></IonItem>
-          <IonItem> <IonIcon icon={playOutline}></IonIcon><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(possibleIngredients[9])}>{possibleIngredients[9]}</IonButton></IonItem>
-          {/* TODO: move a lot of the buttons' code to CSS file */}
+          {
+            possibleIngredients.map((n)=>{
+              for(var _i = 0; _i < possibleIngredients.length; _i++){
+                return(
+                <IonItem><IonButton shape="round" size="small" fill ="clear" color="success" onClick={()=>addFromScrollList(n)}>{n}</IonButton></IonItem>
+                )
+              }
+            })
+          }
         </IonList>
       </div>
       </IonContent>
@@ -124,19 +113,27 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       </div>
       <IonToolbar >
           <IonButtons>
-          <IonGrid>
-            <IonRow>
-              <IonCol col-1>
-          <IonButton onClick = {() => addButton()}>Add</IonButton>
-              </IonCol>
-              <IonCol col-2>
-          <IonButton id="seach-button" onClick = { e => {e.preventDefault(); loadRecipeData(listOfIngredients.toString()); history.push('/recipelist');}}>SEARCH</IonButton>
-             </IonCol>
-             <IonCol col-3>
-          <IonButton onClick = {e=>{clearList();}}>Clear All</IonButton>
-             </IonCol>
-          </IonRow>
-          </IonGrid>
+          <IonButton onClick = {() => addButton()}>Add Ingredient</IonButton>
+          <IonButton id="seach-button"     
+                      onClick = { 
+                          e => {
+                          e.preventDefault();
+                          loadRecipeData(listOfIngredients.toString());
+                          history.push('/recipelist');
+                        }
+                      }
+                      >
+                        SEARCH
+                      </IonButton>
+          <IonButton 
+          onClick = {
+            e=>{
+              clearList();
+            }
+          }
+          >
+            Clear
+          </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonFooter>
