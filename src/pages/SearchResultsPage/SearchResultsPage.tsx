@@ -38,12 +38,14 @@ const SearchResultsPage: React.FC = () => {
   return (
     <IonPage id="search-results-page">
       <IonHeader>
+      <h1>#feedMe</h1>
+      </IonHeader>
         <br></br>
         <IonToolbar>
           <IonBackButton text="Back to Search" defaultHref="/searchpage"></IonBackButton>
           <IonTitle><u>Matching Recipes</u></IonTitle>
         </IonToolbar>
-      </IonHeader>
+      
       <IonContent>
         <IonRefresher slot="fixed" onIonRefresh={refresh}>
           <IonRefresherContent></IonRefresherContent>

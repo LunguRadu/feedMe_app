@@ -47,13 +47,15 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
 // will eventually display induvidual recipe
   return (
     <IonPage id="view-message-page">
-      <IonHeader translucent>
+      <IonHeader>
+         <h1>#feedMe</h1>
+      </IonHeader>
         <IonToolbar>
           <IonButtons>
             <IonBackButton text="Back to List" defaultHref="/home"></IonBackButton>
           </IonButtons>
         </IonToolbar>
-      </IonHeader>
+     
 
       { <IonContent fullscreen>
         {recipe ? (

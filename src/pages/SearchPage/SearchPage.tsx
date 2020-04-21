@@ -14,6 +14,9 @@ import {
   IonList,
   IonItem,
   IonIcon,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 import { attachProps } from '@ionic/react/dist/types/components/utils';
@@ -91,7 +94,6 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
         <h1>#feedMe</h1>
       </IonHeader>
       <IonToolbar>
-      <br></br>
         <p>Select Ingredients:</p>
         <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
         </IonSearchbar>
@@ -122,9 +124,19 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       </div>
       <IonToolbar >
           <IonButtons>
+          <IonGrid>
+            <IonRow>
+              <IonCol col-1>
           <IonButton onClick = {() => addButton()}>Add</IonButton>
+              </IonCol>
+              <IonCol col-2>
           <IonButton id="seach-button" onClick = { e => {e.preventDefault(); loadRecipeData(listOfIngredients.toString()); history.push('/recipelist');}}>SEARCH</IonButton>
+             </IonCol>
+             <IonCol col-3>
           <IonButton onClick = {e=>{clearList();}}>Clear All</IonButton>
+             </IonCol>
+          </IonRow>
+          </IonGrid>
           </IonButtons>
         </IonToolbar>
       </IonFooter>
