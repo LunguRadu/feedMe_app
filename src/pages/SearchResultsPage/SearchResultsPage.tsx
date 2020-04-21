@@ -41,11 +41,10 @@ const SearchResultsPage: React.FC = () => {
         <br></br>
         <IonToolbar>
           <IonBackButton text="Back to Search" defaultHref="/searchpage"></IonBackButton>
-         
           <IonTitle><u>Matching Recipes</u></IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent>
         <IonRefresher slot="fixed" onIonRefresh={refresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
