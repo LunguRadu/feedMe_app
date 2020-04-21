@@ -1,5 +1,6 @@
 import { Plugins } from '@capacitor/core';
-import { Recipe, Ingredients } from '../models/recipe';
+import { Recipe } from '../models/recipe';
+import { SingleRecipe, Ingredients } from '../models/single-recipe';
 
 
 export const getRecipeData = async (ingredients: string | null) => {
@@ -13,13 +14,6 @@ export const getRecipeData = async (ingredients: string | null) => {
     console.log('Found ' + result.count + ' recipes!');
     console.log('Here they are: ' + result);
     console.log(result);
-    var Ingredients: Ingredients[] = [];
-    result.ingredients.forEach(function (ingredient: any) {
-        Ingredients.push({
-        name: 'null',
-        amount: 'null'
-        } as Ingredients)
-    });
 
     var recipes: Recipe[] = [];
     result.forEach(function (item: any) {//loop to update the recipes shown in Listview to API results
@@ -28,11 +22,7 @@ export const getRecipeData = async (ingredients: string | null) => {
         title: item.title,
         image: item.image,
         id: item.id,// use URL as ID because each is unique
-        usedIngredientCount: item.usedIngredientCount,
-        summary: 'null',
-        ingredients: Ingredients,
-
-        instructions: 'null'
+        usedIngredientCount: item.usedIngredientCount
     }
     recipes.push(recipe);// add induvidual recipe to recipes to be 'drawn'
     });
@@ -48,13 +38,6 @@ export const getDummyData = async () => {
       fetch('/assets/data/dummydata.json')
     ]);
     const responseData = await response[0].json();
-    var Ingredients: Ingredients[] = [];
-    responseData.ingredients.forEach(function (ingredient: any) {
-        Ingredients.push({
-        name: 'null',
-        amount: 'null'
-        } as Ingredients)
-    });
 
     var recipes: Recipe[] = [];
     responseData.forEach(function (item: any) {//loop to update the recipes shown in Listview to API results
@@ -63,10 +46,7 @@ export const getDummyData = async () => {
         title: item.title,
         image: item.image,
         id: item.id,// use URL as ID because each is unique
-        usedIngredientCount: item.usedIngredientCount,
-        summary: 'null',
-        ingredients: Ingredients,
-        instructions: 'null'
+        usedIngredientCount: item.usedIngredientCount
 
     }
     recipes.push(recipe);// add induvidual recipe to recipes to be 'drawn'
@@ -80,7 +60,7 @@ export const getDummyData = async () => {
     return dummyData;
   }
 
-  export const getSingleRecipeData = async (id: string | null, recipe : Recipe) => {
+  export const getSingleRecipeData = async (id: string | null, recipe : SingleRecipe) => {
     const response = await Promise.all([
         fetch("https://api.spoonacular.com/recipes/" + id + "/information&apiKey=69bb5d86816f4ef2b9957ce81059a8a9",{
             "method": "GET"
@@ -99,6 +79,9 @@ export const getDummyData = async () => {
     recipe.ingredients = Ingredients;
     recipe.summary = result.summary;
     recipe.instructions = result.instructions;
+    recipe.id = result.id;
+    recipe.title = result.name;
+    recipe.usedIngredientCount = result.usedIngredientCount;
 
     const data = {
         recipe

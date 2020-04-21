@@ -1,7 +1,3 @@
-export interface Ingredients{
-  name: string; //name of ingredient
-  amount: string; 
-}
 
 export interface Recipe {
   // Fields in result
@@ -9,8 +5,6 @@ export interface Recipe {
   image: URL;
   id: string;
   usedIngredientCount: string;
-  ingredients: Ingredients[]; //ingredient list w/amounts
-  instructions: string;
-  summary: string;
+ 
 }
 
