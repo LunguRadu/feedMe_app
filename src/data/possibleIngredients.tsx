@@ -32,3 +32,8 @@ export var possibleIngredients:string[]=[
     "bay leaves",
 
 ]
+
+export var testing:string[] =[
+    "hi",
+    "hello"
+]

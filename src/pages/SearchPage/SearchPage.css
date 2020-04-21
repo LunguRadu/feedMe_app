@@ -6,7 +6,6 @@
     font-weight: 100;
     border-color: #0b5c0b;
     color: #000000;
-
   }
 
 #home-page h5 {
@@ -69,3 +68,4 @@ ion-header {
 ion-content { --background: transparent;}
 ion-item { --background: transparent;}
 ion-list{ --background: transparent;}
+ion-footer{ --background: transparent;}

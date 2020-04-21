@@ -14,6 +14,13 @@ import {
   IonList,
   IonItem,
   IonIcon,
+  IonTabs, 
+  IonTabBar, 
+  IonTabButton,
+  IonLabel,
+  IonTitle,
+  IonTab,
+  IonRouterOutlet
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 import { attachProps } from '@ionic/react/dist/types/components/utils';
@@ -40,34 +47,54 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
 
 
   var listOfIngredients: string[] = [];
-  var paragraph:HTMLHeadingElement = document.getElementById('ingredientsList') as HTMLHeadingElement;
+  var paragraph:HTMLIonListElement = document.getElementById('ingredientsList') as HTMLIonListElement;
   var currentText:string="";
   var url:string=addTwoStrings("/home?inputs=",listOfIngredients.toString());
 
   //TODO: Move this to seperate tsx file
   function addButton(){
     if(currentText===""){
-      return null
+      return 
     }
     else if (listOfIngredients.includes(currentText.toLowerCase().replace(/\s/g, ""))){
-      return null
+      return 
     }
-    else{
+    else if (possibleIngredients.includes(currentText.toLowerCase().replace(/\s/g, ""))){
     listOfIngredients.push(currentText.toLowerCase().replace(/\s/g, ""))
-    paragraph.innerText=(listOfIngredients.toString())
+    paragraph.innerHTML=(
+      listOfIngredients.toString()
+      // {
+      //     listOfIngredients.map((m)=>{
+      //       for(var _i = 0; _i < listOfIngredients.length; _i++){
+      //         return(
+      //         <IonItem>{m}</IonItem>
+      //         )
+      //       }
+      //     })
+      //   } 
+    )
     url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(/,/gi,"+").toString());
     var x:string=""
     setSearchText(x);
+    return
     //TODO: ^ Fix code to clear searchbar when button is clicked
     }
+    return
   }
 
   function clearList(){
     listOfIngredients = []
     url = "";
     currentText=""
-    paragraph.innerText=("***")
+    paragraph.innerHTML=("***")
     //TODO: Clear search bar
+  }
+
+  function removeOneIngredient(){
+    listOfIngredients = []
+    url = "";
+    currentText=""
+    // listOfIngredients.indexOf(ingredientToRemove)
   }
 
   function addTwoStrings(s1:string,s2:string){
@@ -89,6 +116,8 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
         <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
         </IonSearchbar>
       </IonHeader>
+
+
       <IonContent>
       <div id = 'possibleSearches'>
         <IonList inset class="bg-transparent" lines="none">
@@ -109,8 +138,10 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       <IonFooter translucent>
       <div>
         <h5>Your ingredients:</h5>
-        <h6 id='ingredientsList'>***</h6>
+        <IonList id='ingredientsList'> ***
+        </IonList>
       </div>
+
       <IonToolbar >
           <IonButtons>
           <IonButton onClick = {() => addButton()}>Add Ingredient</IonButton>
