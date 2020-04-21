@@ -50,6 +50,7 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   var paragraph:HTMLIonListElement = document.getElementById('ingredientsList') as HTMLIonListElement;
   var currentText:string="";
   var url:string=addTwoStrings("/home?inputs=",listOfIngredients.toString());
+  var searchBar:HTMLIonSearchbarElement = document.getElementById('searchBar') as HTMLIonSearchbarElement;
 
   //TODO: Move this to seperate tsx file
   function addButton(){
@@ -80,6 +81,10 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     //TODO: ^ Fix code to clear searchbar when button is clicked
     }
     return
+  }
+
+  function enterEvent(){
+    searchBar.addEventListener("keyup", ()=>{addButton()})
   }
 
   function clearList(){
@@ -113,7 +118,7 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       <IonHeader translucent>
       <br></br>
         <p>Select Ingredients:</p>
-        <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)}>
+        <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)} onIonFocus={()=>enterEvent()}>
         </IonSearchbar>
       </IonHeader>
 
