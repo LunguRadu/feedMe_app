@@ -5,8 +5,13 @@ import { SingleRecipe, Ingredients } from '../models/single-recipe';
 
 export const getRecipeData = async (ingredients: string | null) => {
     const response = await Promise.all([
-        fetch("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + ingredients + "&number=10&apiKey=69bb5d86816f4ef2b9957ce81059a8a9",{
-            "method": "GET"
+        fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=15&ranking=1&ignorePantry=false&ingredients="+ ingredients, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+                "x-rapidapi-key": "03b2dd72camsh3d3fc675eaafd7bp13f7d4jsn44d5a3f51cd4"
+
+            }
         })
     ]);
     const result = await response[0].json();
