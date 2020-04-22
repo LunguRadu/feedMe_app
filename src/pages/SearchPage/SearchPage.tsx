@@ -119,8 +119,8 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     <IonPage id="home-page">
       <IonHeader translucent>
       <br></br>
-        <p>Select Ingredients:</p>
-        <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)} onIonFocus={()=>enterEvent()}>
+        <p>Select ingredients by typing or clicking:</p>
+        <IonSearchbar placeholder = "type here..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)} onIonFocus={()=>enterEvent()}>
         </IonSearchbar>
       </IonHeader>
 
