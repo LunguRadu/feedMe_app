@@ -117,12 +117,14 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   return (
     
     <IonPage id="home-page">
-      <IonHeader translucent>
-      <br></br>
-        <p>Select ingredients by typing or clicking:</p>
-        <IonSearchbar placeholder = "type here..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)} onIonFocus={()=>enterEvent()}>
-        </IonSearchbar>
+       <IonHeader>
+      <h1>#feedMe</h1>
       </IonHeader>
+      <IonToolbar>
+        <b>Select Ingredients:</b>
+        <IonSearchbar placeholder = "type ingredients..."id = "searchBar" value={IngredientText} onIonChange={e => currentText=(e.detail.value!)} onIonFocus={()=>enterEvent()}>
+        </IonSearchbar>
+      </IonToolbar>
 
 
       <IonContent>
@@ -144,15 +146,14 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
 
       <IonFooter translucent>
       <div>
-        <h5>Your ingredients:</h5>
-        <IonList id='ingredientsList'> ***
-        </IonList>
+        <p>Your ingredients:</p>
+        <IonList id='ingredientsList'> *** </IonList>
       </div>
 
       <IonToolbar >
           <IonButtons>
-          <IonButton onClick = {() => addButton()}>Add Ingredient</IonButton>
-          <IonButton id="seach-button"     
+          <IonButton size="large" onClick = {() => addButton()}>Add Ingredient</IonButton>
+          <IonButton size="large" class="seach-button"     
                       onClick = { 
                           e => {
                           e.preventDefault();
@@ -163,7 +164,7 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
                       >
                         SEARCH
                       </IonButton>
-          <IonButton 
+          <IonButton size="large"
           onClick = {
             e=>{
               clearList();
