@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import './SearchPage.css';
 import {AppContext } from '../../data/AppContext';
-import {possibleIngredients} from '../../data/possibleIngredients';
+import {possibleIngredients} from '../../data/ingredients/possibleIngredients';
+import {listOfIngredients} from '../../data/ingredients/userIngredients';
 import {
   IonButton,
   IonButtons,
@@ -14,13 +15,7 @@ import {
   IonList,
   IonItem,
   IonIcon,
-  IonTabs, 
-  IonTabBar, 
-  IonTabButton,
-  IonLabel,
-  IonTitle,
-  IonTab,
-  IonRouterOutlet
+  IonTabs
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 import { attachProps } from '@ionic/react/dist/types/components/utils';
@@ -45,11 +40,9 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   const [IngredientText, setSearchText] = useState('');
   const { state, dispatch } = useContext(AppContext);
 
-
-  var listOfIngredients: string[] = [];
-  var paragraph:HTMLIonListElement = document.getElementById('ingredientsList') as HTMLIonListElement;
   var currentText:string="";
   var url:string=addTwoStrings("/home?inputs=",listOfIngredients.toString());
+  var paragraph:HTMLIonListElement = document.getElementById('ingredientsList') as HTMLIonListElement;
   var searchBar:HTMLIonSearchbarElement = document.getElementById('searchBar') as HTMLIonSearchbarElement;
 
   //TODO: Move this to seperate tsx file
@@ -57,10 +50,13 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     if(currentText===""){
       return 
     }
+
     else if (listOfIngredients.includes(currentText.toLowerCase().replace(/\s/g, ""))){
       return 
     }
+
     else if (possibleIngredients.includes(currentText.toLowerCase().replace(/\s/g, ""))){
+    // setSearchText("");
     listOfIngredients.push(currentText.toLowerCase().replace(/\s/g, ""))
     paragraph.innerHTML=(
       listOfIngredients.toString()
@@ -75,11 +71,9 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       //   } 
     )
     url=addTwoStrings("/home?inputs=",listOfIngredients.join().replace(/,/gi,"+").toString());
-    var x:string=""
-    setSearchText(x);
     return
-    //TODO: ^ Fix code to clear searchbar when button is clicked
     }
+
     return
   }
 
@@ -88,17 +82,18 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   }
 
   function clearList(){
-    listOfIngredients = []
+    for(var _i = 0; _i <= listOfIngredients.length; _i++){
+      listOfIngredients.pop()
+    }
     url = "";
     currentText=""
     paragraph.innerHTML=("***")
-    //TODO: Clear search bar
   }
 
   function removeOneIngredient(){
-    listOfIngredients = []
-    url = "";
-    currentText=""
+    // listOfIngredients = []
+    // url = "";
+    // currentText=""
     // listOfIngredients.indexOf(ingredientToRemove)
   }
 
