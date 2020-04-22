@@ -60,7 +60,7 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     // setSearchText("");
     listOfIngredients.push(currentText.toLowerCase().replace(/\s/g, ""))
     paragraph.innerHTML=(
-      listOfIngredients.toString()
+      listOfIngredients.toString().replace(/,/g, ", ")
       // {
       //     listOfIngredients.map((m)=>{
       //       for(var _i = 0; _i < listOfIngredients.length; _i++){
