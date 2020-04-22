@@ -55,7 +55,8 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
       return 
     }
 
-    else if (possibleIngredients.includes(currentText.toLowerCase().replace(/\s/g, ""))){
+    // else if (possibleIngredients.includes(currentText.toLowerCase().replace(/\s/g, ""))){
+    else{
     // setSearchText("");
     listOfIngredients.push(currentText.toLowerCase().replace(/\s/g, ""))
     paragraph.innerHTML=(
@@ -74,11 +75,17 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
     return
     }
 
-    return
+    // return
+  }
+
+  function enterKeyPress(e:KeyboardEvent){
+    if(e.keyCode===13){
+      addButton();
+    }
   }
 
   function enterEvent(){
-    searchBar.addEventListener("keyup", ()=>{addButton()})
+    searchBar.addEventListener("keyup", (e)=>{enterKeyPress(e)})
   }
 
   function clearList(){
