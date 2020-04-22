@@ -98,10 +98,12 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
   }
 
   function removeOneIngredient(){
-    // listOfIngredients = []
-    // url = "";
-    // currentText=""
-    // listOfIngredients.indexOf(ingredientToRemove)
+    url = "";
+    currentText=""
+    listOfIngredients.pop();
+    paragraph.innerHTML=(
+      listOfIngredients.toString().replace(/,/g, ", ")
+    )
   }
 
   function addTwoStrings(s1:string,s2:string){
@@ -152,7 +154,9 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
 
       <IonToolbar >
           <IonButtons>
-          <IonButton size="large" onClick = {() => addButton()}>Add Ingredient</IonButton>
+          <IonButton size="large" onClick = {() => addButton()}> Add(+) </IonButton>
+          <IonButton size="large" onClick = {() => removeOneIngredient()}> Delete(-)  </IonButton>
+          <IonButton size="large" onClick = {()=>{clearList();}}> Clear </IonButton>
           <IonButton size="large" class="seach-button"     
                       onClick = { 
                           e => {
@@ -164,15 +168,6 @@ const SearchPage: React.FC<SearchPageProps> = ({history, loadRecipeData }) => {
                       >
                         SEARCH
                       </IonButton>
-          <IonButton size="large"
-          onClick = {
-            e=>{
-              clearList();
-            }
-          }
-          >
-            Clear
-          </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonFooter>
