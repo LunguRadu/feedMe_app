@@ -17,18 +17,14 @@ import {
 import {fastFoodOutline } from 'ionicons/icons';
 import { RouteComponentProps } from 'react-router';
 import './RecipePage.css';
-import {setSingleRecipeData, loadSingleRecipeData } from '../../data/recipes/recipes.actions';
-import { connect } from '../../data/connect';
+import { loadSingleRecipeData } from '../../data/recipes/recipes.actions';
+
 
 interface StateProps extends RouteComponentProps<{
   id: string;
 }> {}
 
-interface DispatchProps {
-  setSingleRecipeData: typeof setSingleRecipeData;
-  
-}
-type RecipeViewProps = StateProps & DispatchProps;
+type RecipeViewProps = StateProps;
 
 const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
 
@@ -37,13 +33,11 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
   const { state, dispatch } = useContext(AppContext);
 
   let id = match.params.id;
-  let recipe = state.recipes.find(x => x.id === id)
+  let recipe = state.recipes.find(x => x.id === id) as Recipe;
+  useIonViewWillEnter(() => { loadSingleRecipeData(id, state.recipes);});
   console.log(id);
   console.log("This is testing to see if ID is found");
-  // useEffect(() => {
-    //   loadSingleRecipeData(id, recipe);
-    // }, [loadSingleRecipeData(id, recipe)]);
-
+  
 // will eventually display induvidual recipe
   return (
     <IonPage id="view-message-page">
@@ -83,9 +77,4 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
   );
 };
 
-export default connect<StateProps, DispatchProps>({
-  mapDispatchToProps: {
-    setSingleRecipeData
-  },
-  component: React.memo(RecipeView)
-});
+export default RecipeView;

@@ -1,6 +1,5 @@
 import { Plugins } from '@capacitor/core';
-import { Recipe } from '../models/recipe';
-import { SingleRecipe, Ingredients } from '../models/single-recipe';
+import { Recipe, Ingredients } from '../models/recipe';
 
 
 export const getRecipeData = async (ingredients: string | null) => {
@@ -10,7 +9,6 @@ export const getRecipeData = async (ingredients: string | null) => {
             "headers": {
                 "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
                 "x-rapidapi-key": "03b2dd72camsh3d3fc675eaafd7bp13f7d4jsn44d5a3f51cd4"
-
             }
         })
     ]);
@@ -26,8 +24,12 @@ export const getRecipeData = async (ingredients: string | null) => {
     var recipe: Recipe = {
         title: item.title,
         image: item.image,
-        id: item.id,// use URL as ID because each is unique
-        usedIngredientCount: item.usedIngredientCount
+        id: item.id,
+        usedIngredientCount: item.usedIngredientCount,
+        hasIngredients: false,
+        ingredients: [],
+        instructions: "",
+        summary: ""
     }
     recipes.push(recipe);// add induvidual recipe to recipes to be 'drawn'
     });
@@ -37,59 +39,37 @@ export const getRecipeData = async (ingredients: string | null) => {
     return data;
 }
 
-export const getDummyData = async () => {
-    console.log("getting dummy data");
+
+  export const getSingleRecipeData = async (id: string | null, recipes: Recipe[]) => {
+
     const response = await Promise.all([
-      fetch('/assets/data/dummydata.json')
-    ]);
-    const responseData = await response[0].json();
-
-    var recipes: Recipe[] = [];
-    responseData.forEach(function (item: any) {//loop to update the recipes shown in Listview to API results
-   
-    var recipe: Recipe = {
-        title: item.title,
-        image: item.image,
-        id: item.id,// use URL as ID because each is unique
-        usedIngredientCount: item.usedIngredientCount
-
-    }
-    recipes.push(recipe);// add induvidual recipe to recipes to be 'drawn'
-    });
-
-    const dummyData = {
-        "recipes": recipes,
-        "loading": false,
-        "searchText": "dummy"
-    }
-    return dummyData;
-  }
-
-  export const getSingleRecipeData = async (id: string | null, recipe : SingleRecipe) => {
-    const response = await Promise.all([
-        fetch("https://api.spoonacular.com/recipes/" + id + "/information&apiKey=69bb5d86816f4ef2b9957ce81059a8a9",{
+        fetch("https://api.spoonacular.com/recipes/" + id + "/information?apiKey=69bb5d86816f4ef2b9957ce81059a8a9",{
             "method": "GET"
         })
     ]);
     const result = await response[0].json();
+    
+    var recipe: any = recipes.find(elem => elem.id === id);
+        if (typeof recipe === "undefined"){
+            alert('undefined');}
+
 
     console.log(result);
     var Ingredients: Ingredients[] = [];
-    result.ingredients.forEach(function (ingredient: any) {
+    result.ingredients.forEach(function () {
         Ingredients.push({
         name: result.extendedIngredients.name,
         amount: result.extendedIngredients.original
         } as Ingredients)
     });
+        
     recipe.ingredients = Ingredients;
     recipe.summary = result.summary;
     recipe.instructions = result.instructions;
-    recipe.id = result.id;
-    recipe.title = result.name;
-    recipe.usedIngredientCount = result.usedIngredientCount;
-
+    recipes.push(recipe);
+  
     const data = {
-        recipe
+        recipes
     }
     return data;
 }

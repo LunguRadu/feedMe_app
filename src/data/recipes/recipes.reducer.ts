@@ -12,13 +12,8 @@ export const recipesReducer = (state: RecipesState, action: RecipesActions): Rec
     case 'set-search-text': {
       return { ...state, searchText: action.searchText };
     }
-    case 'set-singleRecipe-data':{
-      return {...state, }
-    }
-    //add new case, return state, call the new method below
   }
 }
-//define new method that takes in data (with id), and replaces
 
 
 const logger = (reducer: typeof recipesReducer) => {
