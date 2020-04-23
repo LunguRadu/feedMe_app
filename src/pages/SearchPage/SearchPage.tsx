@@ -26,7 +26,8 @@ import {
   addTwoStrings, 
   addFromScrollList, 
   removeOneIngredient, 
-  enterKeyPress
+  enterKeyPress,
+  clearSearchText
 } from "./SearchPageFunctions"
 import { RouteComponentProps } from "react-router";
 import { attachProps } from "@ionic/react/dist/types/components/utils";
@@ -66,7 +67,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
   ) as HTMLIonSearchbarElement;
 
   function enterEvent(searchBar:HTMLIonSearchbarElement, list:string[]){
-    searchBar.addEventListener("keyup", (e)=>{enterKeyPress(e,list,url,currentText,paragraph)})
+    searchBar.addEventListener("keyup", (e)=>{enterKeyPress(e,list,url,currentText,paragraph,searchBar)})
   }
 
   return (
@@ -95,7 +96,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
             possibleIngredients.map((n)=>{
               for(var _i = 0; _i < possibleIngredients.length; _i++){
                 return(
-                <IonItem button lines="inset" onClick={()=>addFromScrollList(n,listOfIngredients,url,currentText,paragraph)}><IonButton size="default" fill="clear" color="warning">{n}</IonButton></IonItem>
+                <IonItem button lines="inset" onClick={()=>addFromScrollList(n,listOfIngredients,url,currentText,paragraph,searchBar)}><IonButton size="default" fill="clear" color="warning">{n}</IonButton></IonItem>
                 )
               }
             })
@@ -119,7 +120,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
           <IonButtons>
             
               <IonCol>
-            <IonButton size="large" onClick={() => addButton(listOfIngredients,url,currentText,paragraph)}>{" "}Add(+){" "}</IonButton>
+            <IonButton size="large" onClick={() => addButton(listOfIngredients,url,currentText,paragraph, searchBar)}>{" "}Add(+){" "}</IonButton>
              </IonCol>
 
              <IonCol>
