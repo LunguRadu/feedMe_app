@@ -72,7 +72,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match, loadSingleRecipeData}) =
             </IonItem>
 
             <div className="ion-padding">
-              <h1>{recipe.image}</h1>
+              <h2>{recipe.instructions}</h2>
               <p>
                 r
               </p>
