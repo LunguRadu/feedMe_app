@@ -51,12 +51,13 @@ export const getRecipeData = async (ingredients: string | null) => {
     
     var recipe: Recipe = recipes.find(elem => elem.id === id) as Recipe;
         if (typeof recipe === "undefined"){
-            alert('undefined');
-        }
-
+            alert('undefined');}
+     
+    console.log("Made IT HERE");
     console.log(result);
+    
     var Ingredients: Ingredients[] = [];
-    result.ingredients.forEach(function () {
+    result.extendedIngredients.forEach(function () {
         Ingredients.push({
         name: result.extendedIngredients.name,
         amount: result.extendedIngredients.original

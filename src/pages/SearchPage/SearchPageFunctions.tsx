@@ -54,9 +54,9 @@ export function enterKeyPress(e:KeyboardEvent, list:string[], url:string, curren
   }
 
 
-// export function enterEvent(searchBar:HTMLIonSearchbarElement, list:string[], url:string, currentText:string, paragraph:HTMLIonListElement){
-//     searchBar.addEventListener("keyup", (e)=>{enterKeyPress(e, list, url, currentText, paragraph)})
-//   }
+export function enterEvent(searchBar:HTMLIonSearchbarElement, list:string[], url:string, currentText:string, paragraph:HTMLIonListElement){
+    searchBar.addEventListener("keyup", (e)=>{enterKeyPress(e, list, url, currentText, paragraph)})
+  }
 
 
 export function removeOneIngredient(list:string[], url:string, currentText:string, paragraph:HTMLIonListElement){
