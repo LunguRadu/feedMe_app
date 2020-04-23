@@ -49,10 +49,10 @@ export const getRecipeData = async (ingredients: string | null) => {
     ]);
     const result = await response[0].json();
     
-    var recipe: any = recipes.find(elem => elem.id === id);
+    var recipe: Recipe = recipes.find(elem => elem.id === id) as Recipe;
         if (typeof recipe === "undefined"){
-            alert('undefined');}
-
+            alert('undefined');
+        }
 
     console.log(result);
     var Ingredients: Ingredients[] = [];

@@ -18,15 +18,22 @@ import {fastFoodOutline } from 'ionicons/icons';
 import { RouteComponentProps } from 'react-router';
 import './RecipePage.css';
 import { loadSingleRecipeData } from '../../data/recipes/recipes.actions';
+import { connect } from '../../data/connect';
 
 
 interface StateProps extends RouteComponentProps<{
-  id: string;
+  id: string, 
+  loadSingleRecipeData: any;
 }> {}
 
-type RecipeViewProps = StateProps;
+interface DispatchProps {
+  loadSingleRecipeData: typeof loadSingleRecipeData;
+  
+}
+type RecipeViewProps = StateProps & DispatchProps;
+// type RecipeViewProps = StateProps;
 
-const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
+const RecipeView: React.FC<RecipeViewProps> = ({ match, loadSingleRecipeData}) => {
 
 
 
@@ -77,4 +84,9 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match }) => {
   );
 };
 
-export default RecipeView;
+export default connect<StateProps, DispatchProps>({
+  mapDispatchToProps: {
+    loadSingleRecipeData
+  },
+  component: React.memo(RecipeView)
+});
