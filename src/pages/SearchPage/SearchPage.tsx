@@ -87,6 +87,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         ></IonSearchbar>
       </IonToolbar>
 
+
       <IonContent>
         <div id = 'possibleSearches'>
         <IonList inset class="bg-transparent" lines="none">
@@ -94,7 +95,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
             possibleIngredients.map((n)=>{
               for(var _i = 0; _i < possibleIngredients.length; _i++){
                 return(
-                <IonItem button lines="inset"><IonButton size="default" fill="clear" color="warning" onClick={()=>addFromScrollList(n,listOfIngredients,url,currentText,paragraph)}>{n}</IonButton></IonItem>
+                <IonItem button lines="inset" onClick={()=>addFromScrollList(n,listOfIngredients,url,currentText,paragraph)}><IonButton size="default" fill="clear" color="warning">{n}</IonButton></IonItem>
                 )
               }
             })
@@ -102,6 +103,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         </IonList>
         </div>
       </IonContent>
+
 
       <IonFooter translucent>
         <div>
