@@ -24,7 +24,7 @@ export const getRecipeData = async (ingredients: string | null) => {
     var recipe: Recipe = {
         title: item.title,
         image: item.image,
-        id: item.id,
+        id: String(item.id),
         usedIngredientCount: item.usedIngredientCount,
         hasIngredients: false,
         ingredients: [],
