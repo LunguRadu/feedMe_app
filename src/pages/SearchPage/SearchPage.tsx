@@ -120,19 +120,19 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
           <IonButtons>
             
               <IonCol>
-            <IonButton size="large" onClick={() => addButton(listOfIngredients,url,currentText,paragraph, searchBar)}>{" "}Add(+){" "}</IonButton>
+            <IonButton size = "small" onClick={() => addButton(listOfIngredients,url,currentText,paragraph, searchBar)}>{" "}Add{" "}</IonButton>
              </IonCol>
 
              <IonCol>
-            <IonButton size="large" onClick={() => removeOneIngredient(listOfIngredients,url,currentText,paragraph)}>{" "}Delete(-){" "}</IonButton>
+            <IonButton size = "small" onClick={() => removeOneIngredient(listOfIngredients,url,currentText,paragraph)}>{" "}Delete{" "}</IonButton>
              </IonCol>
 
              <IonCol>
-            <IonButton size="large" onClick={() => { clearList(listOfIngredients,url,currentText,paragraph);}}>{" "}Clear{" "}</IonButton>
+            <IonButton size = "small" onClick={() => { clearList(listOfIngredients,url,currentText,paragraph);}}>{" "}Clear{" "}</IonButton>
              </IonCol>
 
              <IonCol>
-             <IonButton size="large" class="seach-button" color="success" fill="solid" shape="round" 
+             <IonButton size = "small" class="seach-button" color="success" fill="solid" shape="round" 
                       onClick = { 
                           e => {
                           e.preventDefault();
@@ -145,7 +145,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                       </IonButton>
             </IonCol>
 
-           
           </IonButtons>
           </IonRow>
          </IonGrid>

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect} from 'react';
 import { Recipe } from '../../models/recipe';
 import {AppContext } from '../../data/AppContext';
+import { listOfIngredients } from "../../data/ingredients/userIngredients";
 import {
   IonBackButton,
   IonButtons,
