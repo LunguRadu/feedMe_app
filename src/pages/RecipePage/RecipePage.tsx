@@ -67,14 +67,17 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match, loadSingleRecipeData}) =
                 <h2>
                   {recipe.title}
                 </h2>
-                <h3> <IonNote>Recipe Instructions</IonNote></h3>
+                
+                <h3> Uses {recipe.usedIngredientCount} of your ingredients!</h3>
               </IonLabel>
             </IonItem>
 
             <div className="ion-padding">
-              <h2>{recipe.instructions}</h2>
+              <h4>Ingredients you need:
+                {recipe.ingredients.map(ingredient => <div>{ingredient.name}:
+                {ingredient.amount}</div>)}</h4>
               <p>
-                r
+                {recipe.instructions}
               </p>
             </div>
           </>

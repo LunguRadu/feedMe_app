@@ -15,6 +15,16 @@
 
 #view-message-page ion-item h2 {
   font-weight: 600;
+  font-size: 20px;
+}
+#view-message-page ion-item h3 {
+  font-weight: 600;
+  font-size: 12px;
+}
+#view-message-page ion-item h4 {
+  font-weight: 600;
+  font-size: 8px;
+  text-align: left;
 }
 
 #view-message-page ion-item .date {
@@ -44,4 +54,6 @@
 
 #view-message-page p {
   line-height: 22px;
+  background-color: whitesmoke;
+  font-size: 10px;
 }

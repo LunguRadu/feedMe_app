@@ -57,12 +57,13 @@ export const getRecipeData = async (ingredients: string | null) => {
     console.log(result);
     
     var Ingredients: Ingredients[] = [];
-    result.extendedIngredients.forEach(function () {
+    for ( let i = 0; i < result.extendedIngredients.length ; i++){
+    // result.extendedIngredients.forEach(function () {
         Ingredients.push({
-        name: result.extendedIngredients.name,
-        amount: result.extendedIngredients.original
+        name: result.extendedIngredients[i].name,
+        amount: result.extendedIngredients[i].original
         } as Ingredients)
-    });
+    ;}
         
     recipe.ingredients = Ingredients;
     recipe.summary = result.summary;
