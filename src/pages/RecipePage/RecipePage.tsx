@@ -59,7 +59,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({ match, loadSingleRecipeData}) =
         </IonToolbar>
      
 
-      { <IonContent fullscreen>
+      { <IonContent>
         {recipe ? (
           <>
             <IonItem>
