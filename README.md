@@ -1,4 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Ionic React #feedMe Application
+
+# Product Vision:
+A hybrid app that takes ingredients as input and outputs recipes that use those ingredients. It also suggests recipes that the user has almost enough ingredients for.
+
+This app is designed for college students, young adults, people who are learning to cook, and anyone who is looking for new recipes to try out. This will guide people to discover new recipes and experiment with cooking.
+
+# Getting Started 
+
+* [Download the installer](https://nodejs.org/) for Node LTS.
+* Install the ionic CLI globally: `npm install -g ionic`
+* Clone this repository: `git clone https://github.com/LunguRadu/feedMe_app.git`.
+* Run `npm install` from the project root.
+* Run `ionic serve` in a terminal from the project root.
+* Profit. :tada:
+
+# Running the project on Android and IOS
+
+* Run `npm run android` from the project root to build the Android version
+* Run `npm run ios` from the project root to build the IOS version
+* Run `num run Android-open` from the project root to run the Android Version in Android Studio
+* Run `num run ios-open` from the project root to run the IOS Version in xCode
 
 ## Available Scripts
 
@@ -17,15 +38,6 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
 
@@ -44,9 +56,4 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 
-
-Hi I'm Sam how are you doing? I love the feedme app so much!
-a;skdjfhas;dkfjhas;dfjkha;dsofkjas;dfjhasd;kfjhas;dkfj
-
-
-hgjasfjgsajfgjdgfjkgdkfjklfdzkdsgljkfdjklsfjkdsjkhfjkdsjkhfjklhd
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
