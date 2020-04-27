@@ -1,6 +1,8 @@
 /*Seeting the application background*/
 #home-page {
   background-image: url("https://lh4.googleusercontent.com/Ia8QeLBzj6YtDLs2YmR89DMEnC1RohKoJYXYILjGaU_NqrRQJoMndtmrwgKaHYXvWnIEyzn8qmg8jPoImgwEkLkWOQOWjYMzl7L_A6RSuOj4rLBBK-1_LyMhW1fhk5JX064rPkfbFhs");
+  background-repeat:no-repeat;
+  background-size: cover;
 }
 
 /*Styling "your ingredients" text*/
@@ -42,6 +44,7 @@ ion-toolbar {
 
 /*Removing whitespace in the background of footer*/
 ion-footer {
+  --background:transparent;
   --ion-background-color: transparent;
 }
 
