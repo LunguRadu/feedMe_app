@@ -40,7 +40,13 @@ ion-toolbar {
   padding: inherit;
 }
 
-/*Stylign the contend around the list */
+/*Removing whitespace in the background of footer*/
+ion-footer {
+  --ion-background-color: transparent;
+}
+
+/*Styling the content around the list */
 ion-content {
   --background: transparent;
+  --ion-background-color: transparent;
 }
