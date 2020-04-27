@@ -78,9 +78,11 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         <h1>#feedMe</h1>
       </IonHeader>
 
+      <IonButtons  
+          id="addButton">
       <IonToolbar>
         <p>Select Ingredients:</p>
-        <IonSearchbar
+        <IonSearchbar 
           placeholder="type ingredients..."
           id="searchBar"
           value={IngredientText}
@@ -88,6 +90,23 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
           onIonFocus={() => enterEvent(searchBar, listOfIngredients)}
         ></IonSearchbar>
       </IonToolbar>
+      
+        <IonButton 
+          size="small"
+          onClick={() =>
+            addButton(
+              listOfIngredients,
+              url,
+              currentText,
+              paragraph,
+              searchBar
+            )
+          }
+        >
+          {" "}
+          Add{" "}
+      </IonButton>
+    </IonButtons>
 
       <IonContent>
         <div id="possibleSearches">
@@ -132,21 +151,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
             <IonRow className="ion-align-items-center">
               <IonButtons>
                 <IonCol>
-                  <IonButton
-                    size="small"
-                    onClick={() =>
-                      addButton(
-                        listOfIngredients,
-                        url,
-                        currentText,
-                        paragraph,
-                        searchBar
-                      )
-                    }
-                  >
-                    {" "}
-                    Add{" "}
-                  </IonButton>
                 </IonCol>
 
                 <IonCol>
