@@ -18,17 +18,17 @@ import {
   IonTabs,
   IonRow,
   IonCol,
-  IonGrid
+  IonGrid,
 } from "@ionic/react";
 import {
-  clearList, 
-  addButton, 
-  addTwoStrings, 
-  addFromScrollList, 
-  removeOneIngredient, 
+  clearList,
+  addButton,
+  addTwoStrings,
+  addFromScrollList,
+  removeOneIngredient,
   enterKeyPress,
-  clearSearchText
-} from "./SearchPageFunctions"
+  clearSearchText,
+} from "./SearchPageFunctions";
 import { RouteComponentProps } from "react-router";
 import { attachProps } from "@ionic/react/dist/types/components/utils";
 import {
@@ -66,8 +66,10 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
     "searchBar"
   ) as HTMLIonSearchbarElement;
 
-  function enterEvent(searchBar:HTMLIonSearchbarElement, list:string[]){
-    searchBar.addEventListener("keyup", (e)=>{enterKeyPress(e,list,url,currentText,paragraph,searchBar)})
+  function enterEvent(searchBar: HTMLIonSearchbarElement, list: string[]) {
+    searchBar.addEventListener("keyup", (e) => {
+      enterKeyPress(e, list, url, currentText, paragraph, searchBar);
+    });
   }
 
   return (
@@ -76,7 +78,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         <h1>#feedMe</h1>
       </IonHeader>
 
-
       <IonToolbar>
         <p>Select Ingredients:</p>
         <IonSearchbar
@@ -84,70 +85,118 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
           id="searchBar"
           value={IngredientText}
           onIonChange={(e) => (currentText = e.detail.value!)}
-          onIonFocus={() => enterEvent(searchBar,listOfIngredients)}
+          onIonFocus={() => enterEvent(searchBar, listOfIngredients)}
         ></IonSearchbar>
       </IonToolbar>
 
-
       <IonContent>
-        <div id = 'possibleSearches'>
-        <IonList inset class="bg-transparent" lines="none">
-          {
-            possibleIngredients.map((n)=>{
-              for(var _i = 0; _i < possibleIngredients.length; _i++){
-                return(
-                <IonItem button lines="inset" onClick={()=>addFromScrollList(n,listOfIngredients,url,currentText,paragraph,searchBar)}><IonButton size="default" fill="clear" color="warning">{n}</IonButton></IonItem>
-                )
+        <div id="possibleSearches">
+          <IonList inset class="bg-transparent" lines="none">
+            {possibleIngredients.map((n) => {
+              for (var _i = 0; _i < possibleIngredients.length; _i++) {
+                return (
+                  <IonItem
+                    button
+                    lines="inset"
+                    onClick={() =>
+                      addFromScrollList(
+                        n,
+                        listOfIngredients,
+                        url,
+                        currentText,
+                        paragraph,
+                        searchBar
+                      )
+                    }
+                  >
+                    <IonButton size="default" fill="clear" color="warning">
+                      {n}
+                    </IonButton>
+                  </IonItem>
+                );
               }
-            })
-          }
-        </IonList>
+            })}
+          </IonList>
         </div>
       </IonContent>
 
-
       <IonFooter translucent>
         <div>
-        <p>Your ingredients:</p>
+          <p>Your ingredients:</p>
 
-        <IonList id='ingredientsList'> *** </IonList>
+          <IonList id="ingredientsList"> *** </IonList>
         </div>
 
-
         <IonToolbar>
-         <IonGrid>
+          <IonGrid>
             <IonRow className="ion-align-items-center">
-          <IonButtons>
-            
-              <IonCol>
-            <IonButton size = "small" onClick={() => addButton(listOfIngredients,url,currentText,paragraph, searchBar)}>{" "}Add{" "}</IonButton>
-             </IonCol>
+              <IonButtons>
+                <IonCol>
+                  <IonButton
+                    size="small"
+                    onClick={() =>
+                      addButton(
+                        listOfIngredients,
+                        url,
+                        currentText,
+                        paragraph,
+                        searchBar
+                      )
+                    }
+                  >
+                    {" "}
+                    Add{" "}
+                  </IonButton>
+                </IonCol>
 
-             <IonCol>
-            <IonButton size = "small" onClick={() => removeOneIngredient(listOfIngredients,url,currentText,paragraph)}>{" "}Delete{" "}</IonButton>
-             </IonCol>
+                <IonCol>
+                  <IonButton
+                    size="small"
+                    onClick={() =>
+                      removeOneIngredient(
+                        listOfIngredients,
+                        url,
+                        currentText,
+                        paragraph
+                      )
+                    }
+                  >
+                    {" "}
+                    Delete{" "}
+                  </IonButton>
+                </IonCol>
 
-             <IonCol>
-            <IonButton size = "small" onClick={() => { clearList(listOfIngredients,url,currentText,paragraph);}}>{" "}Clear{" "}</IonButton>
-             </IonCol>
+                <IonCol>
+                  <IonButton
+                    size="small"
+                    onClick={() => {
+                      clearList(listOfIngredients, url, currentText, paragraph);
+                    }}
+                  >
+                    {" "}
+                    Clear{" "}
+                  </IonButton>
+                </IonCol>
 
-             <IonCol>
-             <IonButton size = "small" class="seach-button" color="success" fill="solid" shape="round" 
-                      onClick = { 
-                          e => {
-                          e.preventDefault();
-                          loadRecipeData(listOfIngredients.toString());
-                          history.push('/recipelist');
-                        }
-                      }
-                      >
-                        SEARCH
-                      </IonButton>
-            </IonCol>
-
-          </IonButtons>
-          </IonRow>
-         </IonGrid>
+                <IonCol>
+                  <IonButton
+                    size="small"
+                    class="seach-button"
+                    color="success"
+                    fill="solid"
+                    shape="round"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      loadRecipeData(listOfIngredients.toString());
+                      history.push("/recipelist");
+                    }}
+                  >
+                    SEARCH
+                  </IonButton>
+                </IonCol>
+              </IonButtons>
+            </IonRow>
+          </IonGrid>
         </IonToolbar>
       </IonFooter>
     </IonPage>

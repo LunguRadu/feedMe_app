@@ -1,7 +1,7 @@
-import React, { /*Component,*/ useState, useContext, useEffect} from 'react';
-import MessageListItem from '../ListPage/ListPage';
-import { Recipe } from '../../models/recipe';
-import {AppContext } from '../../data/AppContext';
+import React, { /*Component,*/ useState, useContext, useEffect } from "react";
+import MessageListItem from "../ListPage/ListPage";
+import { Recipe } from "../../models/recipe";
+import { AppContext } from "../../data/AppContext";
 import {
   IonContent,
   IonHeader,
@@ -11,16 +11,13 @@ import {
   IonRefresherContent,
   IonTitle,
   IonToolbar,
-  IonBackButton
-} from '@ionic/react';
-import {
-  useLocation
-} from "react-router-dom";
+  IonBackButton,
+} from "@ionic/react";
+import { useLocation } from "react-router-dom";
 
-import './SearchResultsPage.css';
+import "./SearchResultsPage.css";
 
 const SearchResultsPage: React.FC = () => {
-  
   const { state, dispatch } = useContext(AppContext);
   //Dispatch -> update state
 
@@ -38,14 +35,19 @@ const SearchResultsPage: React.FC = () => {
   return (
     <IonPage id="search-results-page">
       <IonHeader>
-      <h1>#feedMe</h1>
+        <h1>#feedMe</h1>
       </IonHeader>
-        <br></br>
-        <IonToolbar>
-          <IonBackButton text="Back to Search" defaultHref="/searchpage"></IonBackButton>
-          <IonTitle><u>Matching Recipes</u></IonTitle>
-        </IonToolbar>
-      
+      <br></br>
+      <IonToolbar>
+        <IonBackButton
+          text="Back to Search"
+          defaultHref="/searchpage"
+        ></IonBackButton>
+        <IonTitle>
+          <u>Matching Recipes</u>
+        </IonTitle>
+      </IonToolbar>
+
       <IonContent>
         <IonRefresher slot="fixed" onIonRefresh={refresh}>
           <IonRefresherContent></IonRefresherContent>
@@ -53,16 +55,15 @@ const SearchResultsPage: React.FC = () => {
 
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">
-              List of Recipes:
-            </IonTitle>
+            <IonTitle size="large">List of Recipes:</IonTitle>
           </IonToolbar>
         </IonHeader>
 
         <IonList>
-          {state.recipes.map(r => <MessageListItem key={r.id} recipe={r} />)}
+          {state.recipes.map((r) => (
+            <MessageListItem key={r.id} recipe={r} />
+          ))}
         </IonList>
-        
       </IonContent>
     </IonPage>
   );
