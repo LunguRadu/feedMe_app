@@ -69,26 +69,19 @@ const RecipeView: React.FC<RecipeViewProps> = ({
               <IonItem>
                 <IonIcon icon={fastFoodOutline} color="success"></IonIcon>
                 <IonLabel className="ion-text-wrap">
-                  <h2>{recipe.title}</h2>
-
-                  <h3>
-                    {" "}
-                    Uses {recipe.usedIngredientCount} of your ingredients!
-                  </h3>
-                </IonLabel>
+                  <h2> {recipe.title} </h2>
+                  <h4> Uses {recipe.usedIngredientCount} of your ingredients!</h4> 
+                </IonLabel>            
               </IonItem>
 
-              <div className="ion-padding">
-                <h4>
-                  Ingredients you need:
-                  {recipe.ingredients.map((ingredient) => (
-                    <div>
-                      {ingredient.name}:{ingredient.amount}
-                    </div>
-                  ))}
-                </h4>
-                <p>{recipe.instructions}</p>
-              </div>
+             <img src = {recipe.image} alt = "recipe"/>
+             
+              <h5><h3>~ Ingredient List ~ </h3> {recipe.ingredients.map(ingredient => <li>{ingredient.name}  - 
+              
+              {ingredient.amount}</li>)}</h5>              
+              <div></div>              
+              <p> {recipe.instructions} </p>
+            
             </>
           ) : (
             <div>Recipe not found</div>

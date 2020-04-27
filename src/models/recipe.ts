@@ -7,7 +7,7 @@ export interface Ingredients{
 export interface Recipe {
   // Fields in result
   title: string;
-  image: URL;
+  image: string;
   id: string;
   usedIngredientCount: string;
   hasIngredients: boolean;
