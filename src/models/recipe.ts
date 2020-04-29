@@ -1,3 +1,4 @@
+//Template for data stored in a given recipe
 
 export interface Ingredients{
   name: string; //name of ingredient

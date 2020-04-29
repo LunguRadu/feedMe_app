@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react';
-
+//Contains list of ingredients for the user to select from.
 export var possibleIngredients:string[]=[
     "apples",
     "apricots",
@@ -47,9 +46,4 @@ export var possibleIngredients:string[]=[
     "vinegar",
     "yeast",
     "yogurt"
-]
-
-export var testing:string[] =[
-    "hi",
-    "hello"
 ]
