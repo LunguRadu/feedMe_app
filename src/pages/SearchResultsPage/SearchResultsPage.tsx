@@ -1,6 +1,5 @@
-import React, { /*Component,*/ useState, useContext, useEffect } from "react";
+import React, { /*Component,*/ useContext } from "react";
 import MessageListItem from "../ListPage/ListPage";
-import { Recipe } from "../../models/recipe";
 import { AppContext } from "../../data/AppContext";
 import {
   IonContent,
@@ -18,7 +17,7 @@ import { useLocation } from "react-router-dom";
 import "./SearchResultsPage.css";
 
 const SearchResultsPage: React.FC = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { state } = useContext(AppContext);
   //Dispatch -> update state
 
   const refresh = (e: CustomEvent) => {
