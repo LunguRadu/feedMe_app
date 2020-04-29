@@ -1,8 +1,11 @@
-import { Plugins } from '@capacitor/core';
-import { Recipe, Ingredients } from '../models/recipe';
+/*
+This is the file where an API call is made to Spoonacular using ingredients from a list.
+It creates a list of recipes to return and be displayed.
+*/
 
+import { Recipe } from '../models/recipe';
 
-export const getRecipeData = async (ingredients: string | null) => {
+export const getRecipeData = async (ingredients: string | null) => { //makes a GET call to the API using ingredients
     const response = await Promise.all([
         fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=15&ranking=1&ignorePantry=false&ingredients="+ ingredients, {
             "method": "GET",
@@ -12,9 +15,9 @@ export const getRecipeData = async (ingredients: string | null) => {
             }
         })
     ]);
-    const result = await response[0].json();
+    const result = await response[0].json(); // creates a usable constant, result,  to hold the recipe that returns as a json
 
-    console.log('Found ' + result.count + ' recipes!');
+    console.log('Found ' + result.count + ' recipes!'); // *console prints for testing*
     console.log('Here they are: ' + result);
     console.log(result);
 
@@ -26,50 +29,13 @@ export const getRecipeData = async (ingredients: string | null) => {
         image: item.image,
         id: String(item.id),
         usedIngredientCount: item.usedIngredientCount,
-        hasIngredients: false,
-        ingredients: [],
-        instructions: "",
+        hasIngredients: false, 
+        ingredients: [], // sets as empty list  or sting (following variables) to hold place until the rest of the recipe is filled in with singleDataApi
+        instructions: "", 
         summary: ""
     }
     recipes.push(recipe);// add induvidual recipe to recipes to be 'drawn'
     });
-    const data = {
-        recipes
-    }
-    return data;
-}
-
-
-  export const getSingleRecipeData = async (id: string | null, recipes: Recipe[]) => {
-
-    const response = await Promise.all([
-        fetch("https://api.spoonacular.com/recipes/" + id + "/information?apiKey=69bb5d86816f4ef2b9957ce81059a8a9",{
-            "method": "GET"
-        })
-    ]);
-    const result = await response[0].json();
-    
-    var recipe: Recipe = recipes.find(elem => elem.id === id) as Recipe;
-        if (typeof recipe === "undefined"){
-            alert('undefined');}
-     
-    console.log("Made IT HERE");
-    console.log(result);
-    
-    var Ingredients: Ingredients[] = [];
-    for ( let i = 0; i < result.extendedIngredients.length ; i++){
-    // result.extendedIngredients.forEach(function () {
-        Ingredients.push({
-        name: result.extendedIngredients[i].name,
-        amount: result.extendedIngredients[i].original
-        } as Ingredients)
-    ;}
-        
-    recipe.ingredients = Ingredients;
-    recipe.summary = result.summary;
-    recipe.instructions = result.instructions;
-    recipes.push(recipe);
-  
     const data = {
         recipes
     }
