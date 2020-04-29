@@ -23,10 +23,12 @@
   font-weight: 600;
   font-size: 15px;
   text-align: center;
+  background-color: rgba(245, 245, 245, 0.699);
 }
 #view-message-page ion-item h4 {
   font-weight: 600;
   font-size: 12px;
+  text-align: right;
 }
 #view-message-page ion-item h5 {
   font-weight: 600;
@@ -36,12 +38,6 @@
 #view-message-page ion-item h6 {
   font-weight: 600;
   font-size: 6px;
-}
-
-#view-message-page ion-item .date {
-  float: right;
-  align-items: center;
-  display: flex;
 }
 
 #view-message-page ion-item ion-icon {
@@ -56,7 +52,8 @@
 }
 
 #view-message-page p {
-  line-height: 22px;
+  line-height: 25px;
   background-color: whitesmoke;
-  font-size: 10px;
+  font-size: 14px;
+  padding: 10 px;
 }

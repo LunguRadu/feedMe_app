@@ -1,3 +1,7 @@
+/*
+This file is modeled after the reducer from this project https://github.com/ionic-team/ionic-react-conference-app
+*/
+
 import { RecipesActions } from './recipes.actions';
 import { RecipesState } from './recipes.state';
 
