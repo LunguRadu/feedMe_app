@@ -1,6 +1,10 @@
-import React, { useState, useContext } from "react";
+/*
+ This is a file that creates the Search Page where the user adds ingredients to search for using the API.
+ This is identified as the home-page because it's the first page the app opens. 
+*/
+
+import React, { useState } from "react";
 import "./SearchPage.css";
-import { AppContext } from "../../data/AppContext";
 import { possibleIngredients } from "../../data/ingredients/possibleIngredients";
 import { listOfIngredients } from "../../data/ingredients/userIngredients";
 import {
@@ -46,9 +50,7 @@ interface DispatchProps {
 type SearchPageProps = StateProps & DispatchProps;
 
 const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
-  const [IngredientText, setSearchText] = useState("");
-  const { state, dispatch } = useContext(AppContext);
-
+  const [IngredientText] = useState("");
 
   //Current SearchBar text
   var currentText: string = "";
