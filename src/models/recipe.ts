@@ -1,8 +1,8 @@
+/*
+This file contains a recipe interface that lays out the fields that are in a recipe
+*/
 
-export interface Ingredients{
-  name: string; //name of ingredient
-  amount: string; 
-}
+import { Ingredients } from '../models/ingredient';
 
 export interface Recipe {
   // Fields in result
