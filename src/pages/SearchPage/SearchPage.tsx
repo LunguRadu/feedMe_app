@@ -59,7 +59,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
     "/home?inputs=",
     listOfIngredients.toString()
   );
-  var paragraph: HTMLIonListElement = document.getElementById(
+  var inputList: HTMLIonListElement = document.getElementById(
     "ingredientsList"
   ) as HTMLIonListElement;
   var searchBar: HTMLIonSearchbarElement = document.getElementById(
@@ -68,7 +68,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
 
   function enterEvent(searchBar: HTMLIonSearchbarElement, list: string[]) {
     searchBar.addEventListener("keyup", (e) => {
-      enterKeyPress(e, list, url, currentText, paragraph, searchBar);
+      enterKeyPress(e, list, url, currentText, inputList, searchBar);
     });
   }
 
@@ -91,21 +91,21 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         ></IonSearchbar>
       </IonToolbar>
       
-        <IonButton 
-          size="large"
-          onClick={() =>
-            addButton(
-              listOfIngredients,
-              url,
-              currentText,
-              paragraph,
-              searchBar
-            )
-          }
-        >
-          {" "}
-          Add{" "}
-      </IonButton>
+      <IonButton 
+        size="large"
+        onClick={() =>
+          addButton(
+            listOfIngredients,
+            url,
+            currentText,
+            inputList,
+            searchBar
+          )
+        }
+      >
+        {" "}
+        Add{" "}
+    </IonButton>
     </IonButtons>
 
       <IonContent>
@@ -123,7 +123,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                         listOfIngredients,
                         url,
                         currentText,
-                        paragraph,
+                        inputList,
                         searchBar
                       )
                     }
@@ -143,7 +143,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         <div>
           <p>Your ingredients:</p>
 
-          <IonList id="ingredientsList">  </IonList>
+          <IonList id="ingredientsList"> *** </IonList>
         </div>
 
         <IonToolbar>
@@ -162,7 +162,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                         listOfIngredients,
                         url,
                         currentText,
-                        paragraph
+                        inputList
                       )
                     }
                   >
@@ -176,7 +176,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                     size="large"
                     color="success"
                     onClick={() => {
-                      clearList(listOfIngredients, url, currentText, paragraph);
+                      clearList(listOfIngredients, url, currentText, inputList);
                     }}
                   >
                     {" "}
