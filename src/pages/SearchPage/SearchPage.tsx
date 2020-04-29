@@ -77,22 +77,25 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
       <IonHeader>
         <h1>#feedMe</h1>
       </IonHeader>
-
-      <IonButtons  
-          id="addButton">
+      <IonToolbar> <p>Select Ingredients:</p></IonToolbar>
       <IonToolbar>
-        <p>Select Ingredients:</p>
+      <IonButtons id="addButton">
         <IonSearchbar 
+          type ="text"
+          showCancelButton="focus"
+          color = "light"
           placeholder="type ingredients..."
           id="searchBar"
           value={IngredientText}
           onIonChange={(e) => (currentText = e.detail.value!)}
           onIonFocus={() => enterEvent(searchBar, listOfIngredients)}
         ></IonSearchbar>
-      </IonToolbar>
-      
       <IonButton 
-        size="large"
+         strong
+         shape ="round"
+         fill="solid"
+         size="large"
+         color="success"
         onClick={() =>
           addButton(
             listOfIngredients,
@@ -107,6 +110,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         Add{" "}
     </IonButton>
     </IonButtons>
+    </IonToolbar>
 
       <IonContent>
         <div id="possibleSearches">

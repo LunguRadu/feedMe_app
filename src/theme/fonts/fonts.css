@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Pacifico, cursive';
+    src: url(/Users/radulungu/react-ionic/src/theme/fonts.css);
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  span {
+    font-family: 'Pacifico, cursive';
+  }
