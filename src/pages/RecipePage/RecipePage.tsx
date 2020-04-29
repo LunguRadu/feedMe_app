@@ -47,7 +47,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({
   console.log(id);
   console.log("This is testing to see if ID is found");
 
-  // will eventually display induvidual recipe
+  // Adding components to the RecipiePage
   return (
     <IonPage id="view-message-page">
       <IonHeader>

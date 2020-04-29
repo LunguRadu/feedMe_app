@@ -32,6 +32,7 @@ const SearchResultsPage: React.FC = () => {
   }
   let inputs = useQuery().get("inputs");
 
+  // Adding components to the SearchResultPage
   return (
     <IonPage id="search-results-page">
       <IonHeader>

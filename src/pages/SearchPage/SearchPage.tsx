@@ -38,6 +38,7 @@ import {
 import { connect } from "../../data/connect";
 import { playOutline } from "ionicons/icons";
 
+
 interface StateProps {
   id: string;
   history: any;
@@ -73,17 +74,17 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
   }
 
   return (
+    // Adding components to the SearchPage
     <IonPage id="home-page">
       <IonHeader>
         <h1>#feedMe</h1>
-      </IonHeader>
+      </IonHeader> 
       <IonToolbar> <p>Select Ingredients:</p></IonToolbar>
       <IonToolbar>
       <IonButtons id="addButton">
-        <IonSearchbar 
+        <IonSearchbar className = "box-shadow"
           type ="text"
           showCancelButton="focus"
-          color = "light"
           placeholder="type ingredients..."
           id="searchBar"
           value={IngredientText}
@@ -111,7 +112,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
     </IonButton>
     </IonButtons>
     </IonToolbar>
-
       <IonContent>
         <div id="possibleSearches">
           <IonList inset class="bg-transparent" lines="none">
