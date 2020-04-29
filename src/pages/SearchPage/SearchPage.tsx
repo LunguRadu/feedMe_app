@@ -14,8 +14,6 @@ import {
   IonFooter,
   IonList,
   IonItem,
-  IonIcon,
-  IonTabs,
   IonRow,
   IonCol,
   IonGrid,
@@ -27,16 +25,12 @@ import {
   addFromScrollList,
   removeOneIngredient,
   enterKeyPress,
-  clearSearchText,
 } from "./SearchPageFunctions";
-import { RouteComponentProps } from "react-router";
-import { attachProps } from "@ionic/react/dist/types/components/utils";
 import {
   setSearchText,
   loadRecipeData,
 } from "../../data/recipes/recipes.actions";
 import { connect } from "../../data/connect";
-import { playOutline } from "ionicons/icons";
 
 
 interface StateProps {
@@ -55,18 +49,27 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
   const [IngredientText, setSearchText] = useState("");
   const { state, dispatch } = useContext(AppContext);
 
+
+  //Current SearchBar text
   var currentText: string = "";
+
+  //Modified version of listOfIngredients
   var url: string = addTwoStrings(
     "/home?inputs=",
     listOfIngredients.toString()
   );
+
+  //HTML IonList element containing input list for reference
   var inputList: HTMLIonListElement = document.getElementById(
     "ingredientsList"
   ) as HTMLIonListElement;
+
+  //HTML IonSearchBar element for reference
   var searchBar: HTMLIonSearchbarElement = document.getElementById(
     "searchBar"
   ) as HTMLIonSearchbarElement;
 
+  //Adds event listener to the SearchBar to detect Enter Key Press
   function enterEvent(searchBar: HTMLIonSearchbarElement, list: string[]) {
     searchBar.addEventListener("keyup", (e) => {
       enterKeyPress(e, list, url, currentText, inputList, searchBar);

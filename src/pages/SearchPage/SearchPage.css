@@ -48,6 +48,6 @@ ion-content {
 ion-searchbar{
   --ion-background-color: transparent;
   --placeholder-color: green;
-
+  --placeholder-font-weight: 100;
 }
 
