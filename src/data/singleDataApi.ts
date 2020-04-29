@@ -1,5 +1,5 @@
 /*
-This is the file where an API call is made to Spoonacular using a id from clicked on recipe.
+This is the file where an API call is made to Spoonacular using an id from clicked on recipe.
 It creates a complete recipe to be displayed.
 */
 
