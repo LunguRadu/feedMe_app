@@ -92,7 +92,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
       </IonToolbar>
       
         <IonButton 
-          size="small"
+          size="large"
           onClick={() =>
             addButton(
               listOfIngredients,
@@ -128,7 +128,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                       )
                     }
                   >
-                    <IonButton size="default" fill="clear" color="warning">
+                    <IonButton size="default" fill="clear" color="success">
                       {n}
                     </IonButton>
                   </IonItem>
@@ -143,7 +143,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         <div>
           <p>Your ingredients:</p>
 
-          <IonList id="ingredientsList"> *** </IonList>
+          <IonList id="ingredientsList">  </IonList>
         </div>
 
         <IonToolbar>
@@ -155,7 +155,8 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
 
                 <IonCol>
                   <IonButton
-                    size="small"
+                    size="large"
+                    color="success"
                     onClick={() =>
                       removeOneIngredient(
                         listOfIngredients,
@@ -172,7 +173,8 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
 
                 <IonCol>
                   <IonButton
-                    size="small"
+                    size="large"
+                    color="success"
                     onClick={() => {
                       clearList(listOfIngredients, url, currentText, paragraph);
                     }}
@@ -184,7 +186,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
 
                 <IonCol>
                   <IonButton
-                    size="small"
+                    size="large"
                     class="seach-button"
                     color="success"
                     fill="solid"

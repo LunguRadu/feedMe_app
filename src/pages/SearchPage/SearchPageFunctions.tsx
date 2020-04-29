@@ -7,16 +7,19 @@ export function addButton(list:string[], url:string, currentText:string, paragra
     }
     else{
     list.push(currentText.toLowerCase().replace(/\s/g, ""))
-    paragraph.innerHTML=(
-      list.toString().replace(/,/g, ", ")
-    //   {
-    //       listOfIngredients.map((m)=>{
-    //         for(var _i = 0; _i < listOfIngredients.length; _i++){
-    //           return(<IonItem>{m}</IonItem>)
-    //         }
-    //       })
-    //     } 
-    )
+    
+      // list.toString().replace(/,/g, ", ")
+    var temp=document.createElement("IonButton")
+    for(var _i = 0; _i < list.length; _i++){
+      if(_i>0){
+        temp.innerText=", " + list[_i].toString()
+      }
+      else{
+        temp.innerText=list[_i].toString()
+      }
+      paragraph.insertAdjacentElement('beforeend',temp as HTMLIonButtonElement)
+
+    } 
 
     url=addTwoStrings("/home?inputs=",list.join().replace(/,/gi,"+").toString());
     clearSearchText(searchBar);
@@ -44,7 +47,7 @@ export function clearList(list:string[], url:string, currentText:string, paragra
     }
     url = "";
     currentText=""
-    paragraph.innerHTML=("***")
+    paragraph.innerHTML=("")
   }
 
 export function enterKeyPress(e:KeyboardEvent, list:string[], url:string, currentText:string, paragraph:HTMLIonListElement, searchBar:HTMLIonSearchbarElement){
@@ -65,7 +68,7 @@ export function removeOneIngredient(list:string[], url:string, currentText:strin
     list.pop();
     var shortenedListOfIngredients:string=list.toString().replace(/,/g, ", ")
     if(shortenedListOfIngredients===""){
-        paragraph.innerHTML=("***")
+        paragraph.innerHTML=("")
     }
     else{
         paragraph.innerHTML=(shortenedListOfIngredients)
