@@ -1,7 +1,10 @@
-import React, { useContext, useEffect } from "react";
+/*
+ This is a file that creates the Recipe Page to display a singular recipe after being clicked.
+*/
+
+import React, { useContext} from "react";
 import { Recipe } from "../../models/recipe";
 import { AppContext } from "../../data/AppContext";
-import { listOfIngredients } from "../../data/ingredients/userIngredients";
 import {
   IonBackButton,
   IonButtons,
@@ -10,7 +13,6 @@ import {
   IonIcon,
   IonItem,
   IonLabel,
-  IonNote,
   IonPage,
   IonToolbar,
   useIonViewWillEnter,
@@ -22,32 +24,30 @@ import { loadSingleRecipeData } from "../../data/recipes/recipes.actions";
 import { connect } from "../../data/connect";
 
 interface StateProps
-  extends RouteComponentProps<{
+  extends RouteComponentProps<{ // loads in the state of the app, with the id that was clicked
     id: string;
     loadSingleRecipeData: any;
   }> {}
 
 interface DispatchProps {
-  loadSingleRecipeData: typeof loadSingleRecipeData;
+  loadSingleRecipeData: typeof loadSingleRecipeData; // allows loadSingleRecipeData to be used and updated within this file
 }
 type RecipeViewProps = StateProps & DispatchProps;
-// type RecipeViewProps = StateProps;
+
 
 const RecipeView: React.FC<RecipeViewProps> = ({
   match,
   loadSingleRecipeData,
 }) => {
-  const { state, dispatch } = useContext(AppContext);
+  const { state } = useContext(AppContext);
 
   let id = match.params.id;
-  let recipe = state.recipes.find((x) => x.id === id) as Recipe;
+  let recipe = state.recipes.find((x) => x.id === id) as Recipe; // finds recipe with this id
   useIonViewWillEnter(() => {
-    loadSingleRecipeData(id, state.recipes);
+    loadSingleRecipeData(id, state.recipes);  //calls loadSingleRecipe to be updated or set
   });
-  console.log(id);
-  console.log("This is testing to see if ID is found");
 
-  // Adding components to the RecipiePage
+  // Adding recipe components to the RecipePage
   return (
     <IonPage id="view-message-page">
       <IonHeader>
@@ -86,13 +86,13 @@ const RecipeView: React.FC<RecipeViewProps> = ({
           ) : (
             <div>Recipe not found</div>
           )}
-        </IonContent>
+        </IonContent> 
       }
     </IonPage>
   );
 };
 
-export default connect<StateProps, DispatchProps>({
+export default connect<StateProps, DispatchProps>({ // exporting this pages elements to the app state to be saved
   mapDispatchToProps: {
     loadSingleRecipeData,
   },
