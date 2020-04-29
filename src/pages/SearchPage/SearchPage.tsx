@@ -1,6 +1,10 @@
-import React, { useState, useContext } from "react";
+/*
+ This is a file that creates the Search Page where the user adds ingredients to search for using the API.
+ This is identified as the home-page because it's the first page the app opens. 
+*/
+
+import React, { useState } from "react";
 import "./SearchPage.css";
-import { AppContext } from "../../data/AppContext";
 import { possibleIngredients } from "../../data/ingredients/possibleIngredients";
 import { listOfIngredients } from "../../data/ingredients/userIngredients";
 import {
@@ -14,8 +18,6 @@ import {
   IonFooter,
   IonList,
   IonItem,
-  IonIcon,
-  IonTabs,
   IonRow,
   IonCol,
   IonGrid,
@@ -27,16 +29,12 @@ import {
   addFromScrollList,
   removeOneIngredient,
   enterKeyPress,
-  clearSearchText,
 } from "./SearchPageFunctions";
-import { RouteComponentProps } from "react-router";
-import { attachProps } from "@ionic/react/dist/types/components/utils";
 import {
   setSearchText,
   loadRecipeData,
 } from "../../data/recipes/recipes.actions";
 import { connect } from "../../data/connect";
-import { playOutline } from "ionicons/icons";
 
 
 interface StateProps {
@@ -52,21 +50,28 @@ interface DispatchProps {
 type SearchPageProps = StateProps & DispatchProps;
 
 const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
-  const [IngredientText, setSearchText] = useState("");
-  const { state, dispatch } = useContext(AppContext);
+  const [IngredientText] = useState("");
 
+  //Current SearchBar text
   var currentText: string = "";
+
+  //Modified version of listOfIngredients
   var url: string = addTwoStrings(
     "/home?inputs=",
     listOfIngredients.toString()
   );
+
+  //HTML IonList element containing input list for reference
   var inputList: HTMLIonListElement = document.getElementById(
     "ingredientsList"
   ) as HTMLIonListElement;
+
+  //HTML IonSearchBar element for reference
   var searchBar: HTMLIonSearchbarElement = document.getElementById(
     "searchBar"
   ) as HTMLIonSearchbarElement;
 
+  //Adds event listener to the SearchBar to detect Enter Key Press
   function enterEvent(searchBar: HTMLIonSearchbarElement, list: string[]) {
     searchBar.addEventListener("keyup", (e) => {
       enterKeyPress(e, list, url, currentText, inputList, searchBar);
