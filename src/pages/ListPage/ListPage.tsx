@@ -1,9 +1,12 @@
+/*
+This is the file where an individual list element is created with one recipe.
+*/
 import React from "react";
 import { IonItem, IonLabel, IonText } from "@ionic/react";
 import { Recipe } from "../../models/recipe";
 import "./ListPage.css";
 
-interface ListViewProps {
+interface ListViewProps { //gets sigular recipe to display
   recipe: Recipe;
 }
 
