@@ -18,7 +18,7 @@ This app is designed for college students, young adults, people who are learning
 
 * Run `npm run android` from the project root to build the Android version
 * Run `npm run ios` from the project root to build the IOS version
-* Run `num run Android-open` from the project root to run the Android Version in Android Studio
+* Run `num run android-open` from the project root to run the Android Version in Android Studio
 * Run `num run ios-open` from the project root to run the IOS Version in xCode
 
 ## Available Scripts
