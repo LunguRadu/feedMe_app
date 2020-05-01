@@ -6,12 +6,12 @@ import { IonItem, IonLabel, IonText } from "@ionic/react";
 import { Recipe } from "../../models/recipe";
 import "./ListPage.css";
 
-interface ListViewProps { //gets sigular recipe to display
+interface ListViewProps { //gets singular recipe to display
   recipe: Recipe;
 }
 
 const ListView: React.FC<ListViewProps> = ({ recipe }) => {
-  // sets each recipe to list format with name and an image (eventually)
+  // sets each recipe to list format with name and an image
   return (
     <IonItem routerLink={`/recipelist/${recipe.id}`} detail={false}>
       <IonLabel className="ion-text-wrap">
