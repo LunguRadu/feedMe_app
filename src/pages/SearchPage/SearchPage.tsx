@@ -21,6 +21,11 @@ import {
   IonRow,
   IonCol,
   IonGrid,
+  IonTabs,
+  IonTabBar,
+  IonTabButton,
+  IonTab,
+  IonLabel
 } from "@ionic/react";
 import {
   clearList,
