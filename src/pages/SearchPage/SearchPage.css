@@ -3,6 +3,7 @@
   background-image: url("https://i.imgur.com/4dNwHVK.jpg");
   background-repeat:no-repeat;
   background-size: cover;
+  background-color: inherit;
 }
 
 /*Styling "your ingredients" text*/
@@ -49,5 +50,10 @@ ion-searchbar{
   --ion-background-color: transparent;
   --placeholder-font-weight: 1;
   --placeholder-color: green;
+}
+.size{
+  font-size: larger;
+  font-weight: bolder;
+  font-style: italic;
 }
 
