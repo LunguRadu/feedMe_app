@@ -137,7 +137,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                       )
                     }
                   >
-                    <IonButton size="default" fill="clear" color="success">
+                    <IonButton class = "size" fill="clear" color="success">
                       {n}
                     </IonButton>
                   </IonItem>
