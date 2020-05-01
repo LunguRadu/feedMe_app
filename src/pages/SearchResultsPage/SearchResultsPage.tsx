@@ -1,4 +1,8 @@
-import React, { /*Component,*/ useContext } from "react";
+/*
+This is the file where all individual list elements are put together into one list to be
+displayed after searching.
+*/
+import React, { useContext } from "react";
 import MessageListItem from "../ListPage/ListPage";
 import { AppContext } from "../../data/AppContext";
 import {
@@ -12,13 +16,11 @@ import {
   IonToolbar,
   IonBackButton,
 } from "@ionic/react";
-import { useLocation } from "react-router-dom";
 
 import "./SearchResultsPage.css";
 
 const SearchResultsPage: React.FC = () => {
   const { state } = useContext(AppContext);
-  //Dispatch -> update state
 
   const refresh = (e: CustomEvent) => {
     setTimeout(() => {
@@ -26,10 +28,6 @@ const SearchResultsPage: React.FC = () => {
     }, 3000);
   };
 
-  function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-  let inputs = useQuery().get("inputs");
 
   // Adding components to the SearchResultPage
   return (
