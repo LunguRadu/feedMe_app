@@ -21,11 +21,7 @@ import {
   IonRow,
   IonCol,
   IonGrid,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonTab,
-  IonLabel
+  IonIcon
 } from "@ionic/react";
 import {
   clearList,
@@ -86,13 +82,20 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
   return (
     // Adding components to the SearchPage
     <IonPage id="home-page">
+      
       <IonHeader>
-        <h1>#feedMe</h1>
-      </IonHeader> 
-      <IonToolbar> <p>Select Ingredients:</p></IonToolbar>
-      <IonToolbar>
+        <IonToolbar className="toolbar" >
+        <h1 className="feedMeText">#feedMe</h1>
+        </IonToolbar>
+      
+
+     
+      <IonToolbar className ="selectIngredientsToolBar"> 
+        <div className="slectIngredientsText">add ingredients:</div>
+      </IonToolbar>
+
       <IonButtons id="addButton">
-        <IonSearchbar className = "box-shadow"
+        <IonSearchbar className = "searchBar"
           type ="text"
           showCancelButton="focus"
           placeholder="type ingredients..."
@@ -101,12 +104,11 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
           onIonChange={(e) => (currentText = e.detail.value!)}
           onIonFocus={() => enterEvent(searchBar, listOfIngredients)}
         ></IonSearchbar>
-      <IonButton 
-         strong
-         shape ="round"
-         fill="solid"
+      <IonButton className = "addButton"
+         
          size="large"
-         color="success"
+         fill="outline"
+         shape="round"
         onClick={() =>
           addButton(
             listOfIngredients,
@@ -116,13 +118,13 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
             searchBar
           )
         }
-      >
-        {" "}
-        Add{" "}
+      > 
+      + ADD
     </IonButton>
     </IonButtons>
-    </IonToolbar>
-      <IonContent>
+    </IonHeader> 
+    <IonContent>
+      
         <div id="possibleSearches">
           <IonList inset class="bg-transparent" lines="none">
             {possibleIngredients.map((n) => {
@@ -142,7 +144,8 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                       )
                     }
                   >
-                    <IonButton class = "size" fill="clear" color="success">
+                    <IonButton 
+                    className = "listButton" fill="clear">
                       {n}
                     </IonButton>
                   </IonItem>
@@ -153,24 +156,19 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         </div>
       </IonContent>
 
-      <IonFooter translucent>
-        <div>
-          <p>Your ingredients:</p>
-
+     
+        <div className="ingredientListText"> your ingredients:</div>
           <IonList id="ingredientsList"> *** </IonList>
-        </div>
-
-        <IonToolbar>
-          <IonGrid>
-            <IonRow className="ion-align-items-center">
+       
+        <IonFooter>
+        <IonToolbar className = "footerTool">
+          <IonGrid className="grid">
+            <IonRow>
               <IonButtons>
-                <IonCol>
-                </IonCol>
-
-                <IonCol>
-                  <IonButton
+                <IonCol size="5">
+                  <IonButton className = "deleteButton"
+                    buttonType = "string"
                     size="large"
-                    color="success"
                     onClick={() =>
                       removeOneIngredient(
                         listOfIngredients,
@@ -180,30 +178,30 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                       )
                     }
                   >
-                    {" "}
-                    Delete{" "}
+                    <IonIcon slot="start" name="close"></IonIcon>
+                    Delete
                   </IonButton>
                 </IonCol>
 
-                <IonCol>
-                  <IonButton
+                <IonCol size="6">
+                  <IonButton className = "clearButton"
+                    buttonType ="string"
                     size="large"
-                    color="success"
                     onClick={() => {
                       clearList(listOfIngredients, url, currentText, inputList);
                     }}
                   >
-                    {" "}
-                    Clear{" "}
+                    
+                    <IonIcon slot="start" name="refresh-circle-sharp"></IonIcon>
+                    Clear
                   </IonButton>
                 </IonCol>
 
-                <IonCol>
-                  <IonButton
+                <IonCol size="6">
+                  <IonButton className = "searchButton"
+                    buttonType="string"
                     size="large"
-                    class="seach-button"
-                    color="success"
-                    fill="solid"
+                    fill="clear"
                     shape="round"
                     onClick={(e) => {
                       e.preventDefault();
@@ -211,6 +209,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                       history.push("/recipelist");
                     }}
                   >
+                    <IonIcon slot="start" name="search-sharp"></IonIcon>
                     SEARCH
                   </IonButton>
                 </IonCol>
@@ -218,7 +217,8 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
             </IonRow>
           </IonGrid>
         </IonToolbar>
-      </IonFooter>
+         </IonFooter>
+      
     </IonPage>
   );
 };

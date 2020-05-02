@@ -5,9 +5,15 @@
 
 /*Seeting the application background*/
 #search-results-page {
-  background-image: url('../backgroundImg/backgroundImg.jpg');
+  background-image: url('../backgroundImg/backgroundImg.png');
   background-repeat:no-repeat;
   background-size: cover;
   background-color: inherit;
 }
 
+.toolBar{
+  --ion-background-color: transparent;
+}
+.header{
+  --background:rgb(196, 49, 49);
+}

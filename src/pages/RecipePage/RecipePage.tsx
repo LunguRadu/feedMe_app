@@ -51,9 +51,11 @@ const RecipeView: React.FC<RecipeViewProps> = ({
   return (
     <IonPage id="view-message-page">
       <IonHeader>
+        <IonToolbar className="header">
         <h1>#feedMe</h1>
+        </IonToolbar>
       </IonHeader>
-      <IonToolbar>
+      <IonToolbar className="toolBar">
         <IonButtons>
           <IonBackButton
             text="Back to List"

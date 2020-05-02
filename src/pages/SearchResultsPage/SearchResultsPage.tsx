@@ -32,11 +32,15 @@ const SearchResultsPage: React.FC = () => {
   // Adding components to the SearchResultPage
   return (
     <IonPage id="search-results-page">
+
       <IonHeader>
+        <IonToolbar className="header">
         <h1>#feedMe</h1>
+        </IonToolbar>
       </IonHeader>
+
       <br></br>
-      <IonToolbar>
+      <IonToolbar className="toolBar">
         <IonBackButton
           text="Back to Search"
           defaultHref="/searchpage"

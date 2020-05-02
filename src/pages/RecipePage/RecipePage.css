@@ -1,6 +1,6 @@
 /*Setting the application background*/
 #view-message-page{
-  background-image: url('../backgroundImg/backgroundImg.jpg');
+  background-image: url('../backgroundImg/backgroundImg.png');
   background-repeat:no-repeat;
   background-size: cover;
   background-color: inherit;
@@ -57,4 +57,12 @@
   background-color: whitesmoke;
   font-size: 14px;
   padding: 10 px;
+}
+
+.toolBar{
+  --background: transparent;
+}
+
+.header{
+  --background:rgb(196, 49, 49);
 }
