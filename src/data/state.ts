@@ -1,5 +1,5 @@
 
-import { recipesReducer, loggerRecipesReducer } from './recipes/recipes.reducer';
+import {loggerRecipesReducer } from './recipes/recipes.reducer';
 
 export const initialState: AppState = {
     recipes: [],
