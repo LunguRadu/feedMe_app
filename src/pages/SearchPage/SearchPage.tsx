@@ -76,7 +76,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
   //Adds event listener to the SearchBar to detect Enter Key Press
   function enterEvent(searchBar: HTMLIonSearchbarElement, list: string[]) {
     searchBar.addEventListener("keyup", (e) => {
-      enterKeyPress(e, list, url, currentText, inputList, searchBar);
+      enterKeyPress(e, list, currentText, inputList, searchBar);
     });
   }
 
@@ -113,7 +113,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
         onClick={() =>
           addButton(
             listOfIngredients,
-            url,
             currentText,
             inputList,
             searchBar
@@ -138,7 +137,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                       addFromScrollList(
                         n,
                         listOfIngredients,
-                        url,
                         currentText,
                         inputList,
                         searchBar
@@ -173,7 +171,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                     onClick={() =>
                       removeOneIngredient(
                         listOfIngredients,
-                        url,
                         currentText,
                         inputList
                       )
@@ -189,7 +186,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                     buttonType ="string"
                     size="large"
                     onClick={() => {
-                      clearList(listOfIngredients, url, currentText, inputList);
+                      clearList(listOfIngredients, currentText, inputList);
                     }}
                   >
                     

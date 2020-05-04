@@ -1,5 +1,5 @@
 //Adds new ingredient to listOfIngredients, displays it on the SearchPage
-export function addButton(list:string[], url:string, currentText:string, inputList:HTMLIonListElement, searchBar:HTMLIonSearchbarElement){
+export function addButton(list:string[], currentText:string, inputList:HTMLIonListElement, searchBar:HTMLIonSearchbarElement){
     //Does nothing if there is no input
     if(currentText===""){
       return 
@@ -23,8 +23,6 @@ export function addButton(list:string[], url:string, currentText:string, inputLi
       inputList.insertAdjacentElement('beforeend',temp as HTMLIonButtonElement)
     } 
 
-    url=addTwoStrings("/home?inputs=",list.join().replace(/,/gi,"+").toString());
-
     //Clears SearchBar text
     clearSearchText(searchBar);
     return
@@ -42,34 +40,32 @@ export function addTwoStrings(s1:string,s2:string){
 }
 
 //Calls the addButton method using a button, with button's text as the input
-export function addFromScrollList(s:string, list:string[], url:string, currentText:string, inputList:HTMLIonListElement, searchBar:HTMLIonSearchbarElement){
+export function addFromScrollList(s:string, list:string[], currentText:string, inputList:HTMLIonListElement, searchBar:HTMLIonSearchbarElement){
     currentText=s
-    addButton(list,url,currentText,inputList,searchBar)
+    addButton(list,currentText,inputList,searchBar)
     currentText=""
   }
 
 //Deletes all items from listOfIngredients
-export function clearList(list:string[], url:string, currentText:string, inputList:HTMLIonListElement){
+export function clearList(list:string[], currentText:string, inputList:HTMLIonListElement){
     for(var _i = 0; _i <= list.length+1; _i++){
       list.pop()
     }
-    url = "";
     currentText=""
     //Clears HTML rendering of listOfIngredients
     inputList.innerHTML=("***")
   }
 
 //Calls addButton function if user focuses on SeachBar and presses Enter 
-export function enterKeyPress(e:KeyboardEvent, list:string[], url:string, currentText:string, inputList:HTMLIonListElement, searchBar:HTMLIonSearchbarElement){
+export function enterKeyPress(e:KeyboardEvent, list:string[], currentText:string, inputList:HTMLIonListElement, searchBar:HTMLIonSearchbarElement){
   //Only allows Enter Key to activate event
     if(e.keyCode===13){
-      addButton(list,url,currentText,inputList, searchBar);
+      addButton(list,currentText,inputList, searchBar);
     }
   }
 
 //Removes the most recent element from listOfIngredients
-export function removeOneIngredient(list:string[], url:string, currentText:string, inputList:HTMLIonListElement){
-    url = "";
+export function removeOneIngredient(list:string[], currentText:string, inputList:HTMLIonListElement){
     currentText=""
     list.pop();
     var shortenedListOfIngredients:string=list.toString().replace(/,/g, ", ")
