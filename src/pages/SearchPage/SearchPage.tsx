@@ -30,6 +30,7 @@ import {
   addFromScrollList,
   removeOneIngredient,
   enterKeyPress,
+  tooFewIngredients,
 } from "./SearchPageFunctions";
 import {
   setSearchText,
@@ -205,8 +206,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                     shape="round"
                     onClick={(e) => {
                       if(listOfIngredients.length<=1){
-                        alert("please add at least 2 ingredients")
-                        return
+                        tooFewIngredients(inputList, searchBar)
                       }
                       else{
                       e.preventDefault();

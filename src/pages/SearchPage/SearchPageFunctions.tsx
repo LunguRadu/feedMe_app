@@ -9,9 +9,9 @@ export function addButton(list:string[], url:string, currentText:string, inputLi
       return 
     }
     else{
-    list.push(currentText.toLowerCase().replace(/\s/g, ""))
     inputList.innerText=inputList.innerText.replace("***","")    
-    // list.toString().replace(/,/g, ", ") 
+    inputList.innerText=inputList.innerText.replace("Please enter 2 or more ingredients",list.toString().replace(/,/g, ", ") )    
+    list.push(currentText.toLowerCase().replace(/\s/g, ""))
     var temp=document.createElement("IonButton")
     for(var _i = 0; _i < list.length; _i++){
       if(_i>0){
@@ -83,4 +83,9 @@ export function removeOneIngredient(list:string[], url:string, currentText:strin
     }
     }
 
-
+//Temporarily shows an error message if the user types in 1 or fewer ingredients. This is because of an API bug where some of the ingredients return an empty array if they are the only ones in the search.
+export function tooFewIngredients(inputList:HTMLIonListElement, searchBar:HTMLIonSearchbarElement){
+  inputList.innerText=("Please enter 2 or more ingredients")   
+  searchBar.setFocus()
+  return
+}
