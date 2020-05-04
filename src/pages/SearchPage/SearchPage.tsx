@@ -204,9 +204,15 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
                     fill="clear"
                     shape="round"
                     onClick={(e) => {
+                      if(listOfIngredients.length<=1){
+                        alert("please add at least 2 ingredients")
+                        return
+                      }
+                      else{
                       e.preventDefault();
                       loadRecipeData(listOfIngredients.toString());
                       history.push("/recipelist");
+                      }
                     }}
                   >
                     <IonIcon slot="start" name="search-sharp"></IonIcon>
