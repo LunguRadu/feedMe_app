@@ -4,60 +4,60 @@ UI things.
 */
 
 /*Setting the application background*/
-#view-message-page{
+#view-recipe-page{
   background-image: url('../backgroundImg/backgroundImg.png');
   background-repeat:no-repeat;
   background-size: cover;
   background-color: inherit;
 }
 
-#view-message-page ion-item {
+#view-recipe-page ion-item {
   --inner-padding-end: 0;
   --background: transparent;
 }
 
-#view-message-page ion-label {
+#view-recipe-page ion-label {
   margin-top: 12px;
   margin-bottom: 12px;
 }
 
-#view-message-page ion-item h2 {
+#view-recipe-page ion-item h2 {
   font-weight: 600;
   font-size: 20px;
 }
-#view-message-page ion-item h3 {
+#view-recipe-page ion-item h3 {
   font-weight: 600;
   font-size: 15px;
   text-align: center;
   background-color: rgba(245, 245, 245, 0.664);
 }
-#view-message-page ion-item h4 {
+#view-recipe-page ion-item h4 {
   font-weight: 600;
   font-size: 12px;
   text-align: right;
 }
-#view-message-page ion-item h5 {
+#view-recipe-page ion-item h5 {
   font-weight: 600;
   font-size: 8px;
   text-align: left;
 }
-#view-message-page ion-item h6 {
+#view-recipe-page ion-item h6 {
   font-weight: 600;
   font-size: 6px;
 }
 
-#view-message-page ion-item ion-icon {
+#view-recipe-page ion-item ion-icon {
   font-size: 42px;
   margin-right: 8px;
 }
 
-#view-message-page ion-item ion-note {
+#view-recipe-page ion-item ion-note {
   font-size: 15px;
   margin-right: 12px;
   font-weight: normal;
 }
 
-#view-message-page p {
+#view-recipe-page p {
   line-height: 25px;
   background-color: whitesmoke;
   font-size: 14px;

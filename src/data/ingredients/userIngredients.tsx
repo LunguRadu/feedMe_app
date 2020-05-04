@@ -1,3 +1,3 @@
-//Variable to store ingredients the user inputs on SearchPage
+//Variable that stores the ingredients inputted from SearchPage
 export var listOfIngredients:string[]=[
 ]

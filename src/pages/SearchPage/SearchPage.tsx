@@ -57,12 +57,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ history, loadRecipeData }) => {
   //Current SearchBar text
   var currentText: string = "";
 
-  //Modified version of listOfIngredients
-  var url: string = addTwoStrings(
-    "/home?inputs=",
-    listOfIngredients.toString()
-  );
-
   //HTML IonList element containing input list for reference
   var inputList: HTMLIonListElement = document.getElementById(
     "ingredientsList"

@@ -79,7 +79,7 @@ export function removeOneIngredient(list:string[], currentText:string, inputList
     }
     }
 
-//Temporarily shows an error message if the user types in 1 or fewer ingredients. This is because of an API bug where some of the ingredients return an empty array if they are the only ones in the search.
+//Shows an error message if the user types in 1 or fewer ingredients. This is because of an API bug where some of the ingredients return an empty array if they are the only ones in the search.
 export function tooFewIngredients(inputList:HTMLIonListElement, searchBar:HTMLIonSearchbarElement){
   inputList.innerText=("Please enter 2 or more ingredients")   
   searchBar.setFocus()

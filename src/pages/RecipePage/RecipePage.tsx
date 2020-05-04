@@ -49,7 +49,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({
 
   // Adding recipe components to the RecipePage
   return (
-    <IonPage id="view-message-page">
+    <IonPage id="view-recipe-page">
       <IonHeader>
         <IonToolbar className="header">
         <h1>#feedMe</h1>
