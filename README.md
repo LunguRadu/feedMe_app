@@ -14,6 +14,10 @@ This app is designed for college students, young adults, people who are learning
 * Run `ionic serve` in a terminal from the project root.
 * Profit. :tada:
 
+# Build the project
+
+* Run `npm build` in a terminal from the project root
+
 # Running the project on Android and IOS
 
 * Run `npm run android` from the project root to build the Android version
