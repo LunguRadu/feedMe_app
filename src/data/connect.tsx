@@ -1,3 +1,7 @@
+/*
+This file injects all the listeners and properties into our pages/widgets
+*/
+
 import React, { useContext, useMemo } from 'react';
 import { AppContext } from './AppContext';
 import { DispatchObject } from '../util/types';

@@ -1,3 +1,7 @@
+/**
+ Sets up inital app state and listeners.
+ */
+
 import React, { createContext, useReducer } from 'react';
 import { initialState, AppState, reducers } from './state'
 

@@ -1,5 +1,5 @@
 /*
-This file sets up and holds the state of the app.
+This file sets up and holds the state of the recipes.
 It stores values so they can be used multiple times within the app code.
 */
 

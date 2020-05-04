@@ -1,3 +1,8 @@
+/*
+This file holds paramaters for the app to maintain while being viewed.
+UI things.
+*/
+
 /*Setting the application background*/
 #view-message-page{
   background-image: url('../backgroundImg/backgroundImg.png');

@@ -1,4 +1,6 @@
-
+/* 
+This file completes and calls actions to set and maintain the app state.
+*/
 
 import { getRecipeData } from '../dataApi';
 import { getSingleRecipeData } from '../singleDataApi';
