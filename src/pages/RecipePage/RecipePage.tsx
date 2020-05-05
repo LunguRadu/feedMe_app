@@ -10,14 +10,13 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
   IonPage,
   IonToolbar,
   useIonViewWillEnter,
+  IonImg,
+  IonText
 } from "@ionic/react";
-import { fastFoodOutline } from "ionicons/icons";
+// import { fastFoodOutline } from "ionicons/icons";
 import { RouteComponentProps } from "react-router";
 import "./RecipePage.css";
 import { loadSingleRecipeData } from "../../data/recipes/recipes.actions";
@@ -68,23 +67,22 @@ const RecipeView: React.FC<RecipeViewProps> = ({
         <IonContent>
           {recipe ? (
             <>
-              <IonItem>
-                <IonIcon icon={fastFoodOutline} color="success"></IonIcon>
-                <IonLabel className="ion-text-wrap">
-                  <h2> {recipe.title} <h4> Uses {recipe.usedIngredientCount} of your ingredients!</h4> </h2>
-                   
-                </IonLabel>            
-              </IonItem>
-
-             <img src = {recipe.image} alt = "recipe"/>
-             
-              <h5><h3> ~ Ingredient List ~ </h3> {recipe.ingredients.map(ingredient => <li>{ingredient.name}  - 
+                
+              <IonText>
+                <h2> {recipe.title}  </h2>
+                  
+                <h4> Uses {recipe.usedIngredientCount} of your ingredients!</h4>
+         
+                <IonImg src = {recipe.image} alt = "recipe"/>
+                <h3> ~ Ingredient List ~ </h3>
+                <h5> {recipe.ingredients.map(ingredient => <li>{ingredient.name}  - 
               
-              {ingredient.amount}</li>)}</h5>              
-              <div></div> 
-              <h3>~ Instructions ~ </h3>             
-              <p> {recipe.instructions} </p>
-            
+                {ingredient.amount}</li>)}</h5>              
+                <div></div> 
+                <h3>~ Instructions ~ </h3>             
+                <p> {recipe.instructions} </p>
+              </IonText>
+
             </>
           ) : (
             <div>Recipe not found</div>

@@ -2,7 +2,7 @@
 This is the file where an individual list element is created with one recipe.
 */
 import React from "react";
-import { IonItem, IonLabel, IonText } from "@ionic/react";
+import { IonItem, IonLabel, IonText, IonImg } from "@ionic/react";
 import { Recipe } from "../../models/recipe";
 import "./ListPage.css";
 
@@ -15,7 +15,7 @@ const ListView: React.FC<ListViewProps> = ({ recipe }) => {
   return (
     <IonItem routerLink={`/recipelist/${recipe.id}`} detail={false}>
       <IonLabel className="ion-text-wrap">
-          <img src = {recipe.image} alt = "recipe" />
+          <IonImg src = {recipe.image} alt = "recipe" />
           <IonText>
             <h2>{recipe.title}</h2>
         </IonText>

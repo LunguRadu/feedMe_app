@@ -16,52 +16,36 @@ UI things.
   --background: transparent;
 }
 
-#view-recipe-page ion-label {
-  margin-top: 12px;
-  margin-bottom: 12px;
+#view-recipe-page ion-text h2 {
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
-#view-recipe-page ion-item h2 {
+#view-recipe-page ion-text h3 {
   font-weight: 600;
-  font-size: 20px;
-}
-#view-recipe-page ion-item h3 {
-  font-weight: 600;
-  font-size: 15px;
+  font-size: 25px;
   text-align: center;
   background-color: rgba(245, 245, 245, 0.664);
 }
-#view-recipe-page ion-item h4 {
+#view-recipe-page ion-text h4 {
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   text-align: right;
+  margin-bottom: 20px;
 }
-#view-recipe-page ion-item h5 {
-  font-weight: 600;
-  font-size: 8px;
+#view-recipe-page ion-text h5 {
+  font-weight: 500;
+  font-size: 20px;
   text-align: left;
-}
-#view-recipe-page ion-item h6 {
-  font-weight: 600;
-  font-size: 6px;
-}
-
-#view-recipe-page ion-item ion-icon {
-  font-size: 42px;
-  margin-right: 8px;
-}
-
-#view-recipe-page ion-item ion-note {
-  font-size: 15px;
-  margin-right: 12px;
-  font-weight: normal;
 }
 
 #view-recipe-page p {
+  font-weight: 500;
   line-height: 25px;
-  background-color: whitesmoke;
-  font-size: 14px;
+  font-size: 18px;
   padding: 10 px;
+
 }
 
 .toolBar{
@@ -71,3 +55,10 @@ UI things.
 .header{
   --background:rgb(196, 49, 49);
 }
+
+#view-recipe-page ion-img{
+  width: 100%;
+  padding: 0px;
+  float: none;
+}
+ 

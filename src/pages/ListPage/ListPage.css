@@ -60,3 +60,8 @@ ion-text {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+ion-img{
+  width: 100%;
+  padding: 0px;
+}
