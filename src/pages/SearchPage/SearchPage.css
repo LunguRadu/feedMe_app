@@ -41,6 +41,7 @@ ion-content {
   --background: transparent;
   --ion-background-color: transparent;
 }
+
 /*Styling the searchBar */
 ion-searchbar{
   --ion-background-color: transparent;
@@ -60,6 +61,7 @@ ion-searchbar{
 .toolbar{
   --background:rgb(196, 49, 49);
 }
+
 /*Styling the feedMe text */
 .feedMeText{
   color: black;

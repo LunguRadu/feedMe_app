@@ -8,7 +8,7 @@ UI things.
   --background: var(--ion-background-color);
 }
 
-/*Seeting the application background*/
+/*Setting the application background*/
 #search-results-page {
   background-image: url('../backgroundImg/backgroundImg.png');
   background-repeat:no-repeat;
@@ -16,9 +16,12 @@ UI things.
   background-color: inherit;
 }
 
+/*Removing whitespace from the background around the toolbar*/
 .toolBar{
   --ion-background-color: transparent;
 }
+
+/*Setting the header background as a slightly different red than the body*/
 .header{
   --background:rgb(196, 49, 49);
 }

@@ -11,11 +11,13 @@ UI things.
   background-color: inherit;
 }
 
+/*Styling the list -- removing whitespace from background*/
 #view-recipe-page ion-item {
   --inner-padding-end: 0;
   --background: transparent;
 }
 
+/*Setting the text properties*/
 #view-recipe-page ion-text h2 {
   font-weight: 700;
   font-size: 22px;
@@ -48,14 +50,17 @@ UI things.
 
 }
 
+/*Removing whitespace from the background around the toolbar*/
 .toolBar{
   --background: transparent;
 }
 
+/*Setting the header to a slightly different red than the body*/
 .header{
   --background:rgb(196, 49, 49);
 }
 
+/*The image covers the whole page width*/
 #view-recipe-page ion-img{
   width: 100%;
   padding: 0px;
