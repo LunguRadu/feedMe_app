@@ -1,3 +1,7 @@
+/*
+This file is an interface for dispatch properties.
+*/
+
 export interface DispatchObject {
     [key: string]: any,
     type: string
