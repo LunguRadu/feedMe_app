@@ -1,3 +1,8 @@
+/*
+This file holds paramaters for the app to maintain while being viewed.
+UI things.
+*/
+
 /*Styling the toolbar, making it transparent*/
 #home-page ion-content ion-toolbar {
   --background: var(--ion-background-color);
