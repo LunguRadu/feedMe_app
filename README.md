@@ -5,6 +5,7 @@ A hybrid app that takes ingredients as input and outputs recipes that use those 
 
 This app is designed for college students, young adults, people who are learning to cook, and anyone who is looking for new recipes to try out. This will guide people to discover new recipes and experiment with cooking.
 
+
 # Getting Started 
 
 * [Download the installer](https://nodejs.org/) for Node LTS.
